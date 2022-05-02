@@ -1,0 +1,3 @@
+Unity lighting will not work.
+No point working on mapping, etc, until that is working
+

@@ -1,0 +1,24 @@
+Problem (https://forum.unity.com/threads/render-mode-transparent-doesnt-work-see-video.357853)
+	Efficient, and correct sorting of 3d transparency in real time rendering is still an unsolved problem.
+	There have been a number of attempts to fix this or mitigate it, but they all come with a fairly significant performance hit.
+
+	The way any single model is rendered is each polygon of a model is rendered in the order they exist in the model's definition.
+	In the case of opaque or cutout each polygon writes to the depth buffer.
+	Each new polygon drawn will test against the depth buffer and skip those pixels that are occluded.
+
+	With transparent/fade the polygons test against the depth buffer but do not write to it.
+	Doing so may prevent other transparent objects from rendering behind it, but it also means sorting in model can be wrong.
+	Just enabling depth write won't entirely fix it either.
+	Anything that gets rendered out of order with opaque stuff just gets overwritten by the polygons that draw later.
+	With transparent stuff it's blended over what's already rendered.
+
+	Besides, what you want isn't actually correctly sorted transparency.
+	You want it to look like it does when opaque, but transparent.
+	With correctly sorted transparency when it starts to fade you'd still see "inside" the model as it fades out.
+
+
+Solutions
+	HDRP Transparent Depth Prepass
+		Doesn't work out-of-box with hdrp/lit shader
+		Try custom shader?
+		What does 'transparent depth prepass' do?

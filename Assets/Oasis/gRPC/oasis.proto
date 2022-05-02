@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "server/pkg/pb";
+option csharp_namespace = "Oasis.Grpc";
+
+service Oasis {
+  rpc GetTexture(DomainName) returns (Texture) {}
+  rpc GetBlock(DomainName) returns (Block) {}
+  rpc GetBlockState(BlockState) returns (Model) {}
+  rpc GetChunk(ChunkRequest) returns (Chunk) {}
+  rpc GetPlace(PlaceRequest) returns (Place) {}
+  rpc SearchBlocks(DomainName) returns (Blocks) {}
+  rpc SearchPlaces(PlaceRequest) returns (Places) {}
+  rpc Feed(stream FeedRequest) returns (stream FeedResponse) {}
+}
+
+// Realm
+message Realm {
+  DomainName domainName = 1;
+}
+
+// Places
+message PlaceRequest {
+  DomainName realm = 1;
+  string name = 2;
+}
+message Place {
+  DomainName realm = 1; // minecraft:default
+  string name = 2; // Riverside
+  Int3 xyz = 3;
+  bytes thumbnail = 4;
+}
+message Places {
+  repeated Place value = 1;
+}
+
+// Model
+message Model {
+  uint32 id   = 1;
+  string type = 2;
+  string name = 3;
+  string domain = 4;
+  map<string,string> textures = 5;
+  repeated Element elements = 6;
+  string north = 7;
+  string south = 8;
+  string east = 9;
+  string west = 10;
+  string up = 11;
+  string down = 12;
+  BlockType blockType = 13;
+  TextureType textureType = 14;
+  int32 x = 15;
+  int32 y = 16;
+
+  message Element{
+    repeated float from = 1;
+    repeated float to = 2;
+    map<string, Face> faces = 3;
+    Rotation rotation = 4;
+    bool uvlock = 5;
+  }
+  message Face{
+    repeated int32 uv = 1;
+    string texture = 2;
+  }
+  message Rotation{
+    repeated int32 origin = 1;
+    float angle = 2;
+    string axis = 3;
+  }
+}
+message BlockState {
+  DomainName block = 1;
+  map<string, string> state = 2;
+}
+
+// Chunks
+message ChunkRequest {
+  DomainName realm = 1;
+  Int3 xyz = 2;
+}
+message Chunk {
+  Int3 xyz = 1;
+  repeated BlockState palette = 2;
+  bytes voxels = 3;
+}
+
+// Blocks
+message Block {
+  DomainName domainName = 1;
+  BlockType blockType = 2;
+  TextureType textureType = 3;
+}
+message Blocks {
+  repeated Block value = 1;
+}
+
+
+// Textures
+message Texture{
+  TextureType type = 1;
+  string name   = 2;
+  string domain = 3;
+  string base64 = 4;
+}
+
+
+
+// Feed
+message FeedRequest {
+  oneof event {
+    DomainName joinRealm = 1;
+    Int3 changeChunk = 2;
+    VoxelChange voxelChange = 3;
+  }
+}
+message FeedResponse {
+  oneof event {
+    VoxelChange voxelChange = 1;
+    Shutdown shutdown = 2;
+  }
+  message Shutdown {}
+}
+message VoxelChange {
+  Int3 voxel = 1;
+  BlockState blockState = 2;
+  int32 paletteIndex = 3;
+}
+
+
+// Primitives
+message Id { uint32 value = 1; }
+message Int3 {
+  int32 x = 1;
+  int32 y = 2;
+  int32 z = 3;
+}
+message Name { string value = 1; }
+message DomainName {
+  string domain = 1;
+  string name = 2;
+}
+message Empty {}
+enum TextureType {
+  OPAQUE = 0;
+  TRANSPARENT = 1;
+  ALPHACLIP = 2;
+  NOTEXTURETYPE = 3;
+}
+enum BlockType {
+  CUBE = 0;
+  MODEL = 1;
+  LIQUID = 2;
+  AIR = 3;
+  NOBLOCKTYPE = 4;
+}

@@ -1,0 +1,14 @@
+Types
+	SVOGI -> VXGI
+		Sparse voxel octree global illumination
+		Rays are traced through voxels and shadow maps to gather occlusion and in-directional lighting.
+
+Features
+	Multi-boune GI using temporal feedback loop
+
+
+Steps
+	Voxelization of scene to get voxel depth
+	Render geometry and get color.  Render to volume and downsample.
+	Tracing diffuse and specular
+

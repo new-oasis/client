@@ -1,0 +1,4 @@
+Creating
+	Editor script
+		BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
+	'Assets => Build AssetBundles' from menu

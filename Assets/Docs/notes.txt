@@ -1,0 +1,16 @@
+Sections#FindOrCreate
+	Create entity
+	Read anvil section
+	Add voxel buffer
+	Add palette buffer
+		BlockStates#FindOrCreate
+			Block#FindOrCreate
+			BlockStateLoadSystem
+				Compute and queue model; wait for ready
+			WaitForReadyTag
+	Create slices for this section and adjacent
+
+
+
+
+

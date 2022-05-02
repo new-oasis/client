@@ -1,0 +1,40 @@
+﻿GPUs
+	MBP Intel UHD Graphics 630 1536 M
+		24 unified pipelines
+		64/128 Bit memory bus
+		Shared memory
+	6800GT (2004)
+		256-bit bus
+		16 pipelines
+		256 MB DDR3 memory
+		350-450 mHz
+		32-35 GB per second bandwidth rate
+
+Render Pipelines
+	Legacy Render Pipeline
+		Dynamic batching
+			Particles, line, and trail renderers
+		Static batching
+			Combines meshes
+			Disables gpu instancing
+	SRP batching
+	Performance
+		50,000 cubes == 1.2M verts
+		URP + HybridV2
+			60fps; 6 setpass; 54 batches
+		URP
+			8fps; 16 setpass
+		Default render pipeline; instanced
+			8fps; 7 setpass
+		Default render pipeline; not-instanced
+			6fps; 7 setpass
+
+
+
+
+
+
+
+
+
+

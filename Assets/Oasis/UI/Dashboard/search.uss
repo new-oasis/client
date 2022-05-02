@@ -1,0 +1,32 @@
+.search {
+    width: 384px;
+    height: 100%;
+    right: auto;
+    position: relative;
+    align-items: center;
+    font-size: 36px;
+    flex-direction: row-reverse;
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    -unity-font: url('/Assets/Oasis/UI/Dashboard/Fonts/fa-solid-900.ttf');
+    -unity-font-definition: none;
+    justify-content: center;
+    display: flex;
+}
+
+.search > .unity-text-field__label {
+    margin-left: 10px;
+    min-width: 40px;
+    width: 40px;
+}
+
+.search > .unity-text-field__input {
+    margin-left: 10px;
+    min-width: 40px;
+    width: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+}

@@ -1,0 +1,38 @@
+Sample
+	Hierachy
+		Sky and Fog Volume
+			Visual Environment
+			HDRI Sky
+			Fog
+		Post Process Volume
+			Vignette
+			Exposure
+			White Balance
+			Chromatic Aberration
+	Lighting
+		Environment uses same SkyAndFogSettings as Heirachy volume
+	HDRP Defaults
+		Shadows, etc, etc
+
+
+
+Config Files
+	VolumeProfile
+		Default
+	RenderPipeline
+		Set per quality level
+		Rendering
+		Lighting
+		Post-processing
+
+Auto exposure
+	
+
+
+
+Gotchas
+	No android support
+	RenderTexture needs Pipeline 'Color Buffer Format' R16G16B16A16
+	Origin == recreate shadergraph
+
+

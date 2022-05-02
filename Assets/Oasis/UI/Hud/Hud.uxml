@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="hud.uss" />
+    <Style src="/Assets/Oasis/UI/oasis.uss" />
+    <ui:VisualElement name="hud" class="full-screen hud" style="display: none;">
+        <ui:VisualElement name="crosshair" class="crosshair" />
+        <ui:VisualElement name="toolbar" class="toolbar">
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+            <ui:VisualElement name="toolbarSlot" class="toolbarSlot" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

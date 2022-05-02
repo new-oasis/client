@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="/Assets/Oasis/UI/Dashboard/slot.uss" />
+    <ui:Button display-tooltip-when-elided="true" name="slot" class="slot">
+        <ui:VisualElement name="image" class="image" />
+        <ui:Label text="SLOTTY MCSLOTFACE" display-tooltip-when-elided="true" name="title" class="title" />
+    </ui:Button>
+</ui:UXML>

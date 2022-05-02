@@ -1,0 +1,16 @@
+Conclusion
+	Oasis if mapping work justified
+
+
+
+Oasis architecture enables
+	+ Custom block styles and behaviours
+	- Mapping and importing work
+
+Minecraft architecture
+	- Limited block states and voxel properties
+	+ Easy import and tool integration
+
+
+
+

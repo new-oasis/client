@@ -1,0 +1,4 @@
+gRPC
+    plugins from grpc_unity_package.2.26.0-dev
+    mono, not il2cpp
+    .net4.x

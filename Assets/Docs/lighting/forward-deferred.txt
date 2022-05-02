@@ -1,0 +1,14 @@
+
+
+Forward
+	MSAA
+
+Deferred
+	Realtime GI many lights
+	Seperates materials and lighting
+	Use SRAA in place of MSAA
+	Easy decals
+
+
+
+

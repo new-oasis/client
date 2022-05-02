@@ -1,0 +1,43 @@
+Minecraft BlockStates vs Oasis Logic
+
+BlockStates
+    + Criteria with variant
+    - Most logic still in classes
+    / Finite
+
+Oasis Logic
+    + Surfaces user inputs, block data, and voxel data
+    + Richer logic
+
+Conclusion
+    Write logic for each block
+    Map each block+variant to block+data
+
+
+Question
+
+
+
+Minecraft 
+    Data
+        Blocks
+            name
+            states
+        Voxels
+            id
+            properties
+    Runtime
+        id = name-possible_states
+        model from classes and blockstates
+
+Oasis
+    Data
+        Blocks
+            id
+            name
+        Voxels
+            id
+            data
+    Runtime
+        Logic
+        

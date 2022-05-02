@@ -1,0 +1,7 @@
+Gaps
+    Cause
+        non-merged verts
+    Remediation
+        Decrease depth and normal bias on shadows, but introduces artifacts.  (in URP Asset)
+        Two sided shadow rendering didn't help.
+

@@ -1,0 +1,30 @@
+AN EVALUATION OF REAL-TIME GLOBAL ILLUMINATION TECHNIQUES.pdf
+
+Voxel Cone Tracer
+
+In the field of computer graphics, realistic illumination has always been a major hurdle. Cal- culating the direct illumination caused on an object in the immediate view of a light source is no longer a problem; the same can however not be said about indirect illumination.
+
+
+Methods
+	Ray-tracing
+		rays from camera
+	Photon mappping
+		rays from light source
+
+
+
+Cones
+	ray including spread angle and virtual origin information.
+	Allows for better anti-aliasing, calculating fuzzy shadows and dull reflections, and calculating lods, and faster intersections.
+
+
+
+Voxel Cone Tracer
+	Combination of cone tracing and voxels.
+	Discretizes scenes geometry using voxels.
+	This is followed by three steps during which the lighting is computed based on this discretized representation of the scene.
+	Problems due to approximation
+		Light leaking, caused by the geometry simplification
+		color banding, caused by the sampling steps of the voxel structure during cone tracing.
+
+

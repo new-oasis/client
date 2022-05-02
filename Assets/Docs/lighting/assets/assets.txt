@@ -1,0 +1,29 @@
+Must
+	ninlilizi/Nigiri
+		SRP 50% done in 2018
+		V2 coming soon
+
+Should
+	SEGI
+		Original by Sonic Ether
+		https://forum.unity.com/threads/segi-fully-dynamic-global-illumination.410310/page-44
+
+Could
+	demonixis/SSGI-URP
+	cdrinmatane/SSRT
+	Looooong/Unity-SRP-VXGI
+		Barely works
+
+
+
+Wont
+	HXGI
+		Unreleased
+	Unity RTX GI
+		Mature DDGI asset
+
+
+Volumetric Lights - Not GI
+	Aura 2 (41EUR)
+	Kronnect Volumetric Lights
+

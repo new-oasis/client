@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="/Assets/Oasis/UI/oasis.uss" />
+    <ui:VisualElement name="menu" class="full-screen" style="display: none; flex-direction: column;">
+        <ui:VisualElement name="TopBar" style="flex-grow: 0; flex-direction: row; height: 100px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; background-color: rgb(180, 42, 51);">
+            <ui:Label text="OASIS" display-tooltip-when-elided="true" style="justify-content: center; font-size: 48px; -unity-font-style: bold;" />
+            <ui:Label text="Pre-alpha V0.1" display-tooltip-when-elided="true" style="flex-grow: 1; align-items: auto; -unity-text-align: middle-center; font-size: 24px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="List" style="flex-grow: 1; width: 400px; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;">
+            <ui:Label text="Continue" display-tooltip-when-elided="true" name="Continue" style="font-size: 32px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" />
+            <ui:Label text="Settings" display-tooltip-when-elided="true" name="Settings" style="font-size: 32px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" />
+            <ui:Label text="Exit" display-tooltip-when-elided="true" name="Exit" style="font-size: 32px; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

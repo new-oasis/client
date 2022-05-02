@@ -1,0 +1,33 @@
+Blocker
+	HDRP/URP have max 24 lights in tile/cluster
+	Lights range 10 means 10^3=1k lights.
+
+
+Decisions
+	Explore VXGI and related assets
+
+
+Unity Pipelines
+	Default
+		= Deferred; No transparents
+		- ShaderGraph
+		- Hybrid Renderer
+	URP
+		+ ShaderGraph
+		+ Hybrid Renderer.  High perfromance with ComponentData to GPU Instances
+		- No automatic Exposure.  Harder to reconcile dark and lit areas.
+		- No deferred
+		- Max 24 point lights in 8x8 tile.
+	HDRP
+		+ ShaderGraph
+		+ Hybrid Renderer.  High perfromance with ComponentData to GPU Instances
+		+ Automatic Exposure in Post Processing.  Requires compute shader
+		- Max 24 point lights in 8x8 tile.
+
+
+
+HDRP Max 24 point lights in 8x8 tile.
+	https://forum.unity.com/threads/hdrp-tile-cluster-lights-rendering-bug.667234/
+	https://forum.unity.com/threads/hd-spr-max-number-of-lights-per-tile.522244/
+
+

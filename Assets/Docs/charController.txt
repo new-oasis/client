@@ -1,0 +1,40 @@
+Systems
+	CharacterControllerOneToManyInputSystem
+		copy inputs from CharacterControllerInput to CharacterControllerInternalData
+
+
+	CharacterControllerAuthoring
+		CharacterControllerSystem
+			ChatacterControllerJob
+			ApplyDefferedPhysicsUpdatesJob
+
+
+
+Data
+	CharacterControllerComponentData
+	CharacterControllerInput
+	CharacterControllerInternalData
+	CharacterControllerAuthoring
+
+
+
+
+Inputs flow
+	DemoInputGatheringSystems
+		Gets inputActions from scob
+		Assign callbacks
+		Assign inputs to CharacterControllerInput singleton
+	OneToManyInputSystm
+		Copy inputs to CharacterControllerInternalData
+
+
+
+
+Body types
+	Kinematic  <=== Unity CharacterController body
+		Move under explicit user control.
+		No gravity or forces.
+		Has collisions, but user handles movement.
+	Dynamic
+		Use for physics objects you want to be able to stack & topple and have them behave plausibly, or objects you steer in a physics-focused way, like a rocketship.
+

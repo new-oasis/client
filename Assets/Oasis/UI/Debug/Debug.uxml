@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="Debug.uss" />
+    <Style src="/Assets/Oasis/UI/oasis.uss" />
+    <ui:VisualElement name="debug" class="full-screen debug">
+        <ui:VisualElement name="player" class="debug-section" style="margin-bottom: 20px; height: auto;">
+            <ui:Label text="Player" display-tooltip-when-elided="true" name="player-title" class="debug-header-1 debug-header" />
+            <ui:TextField picking-mode="Ignore" label="Facing" name="player-facing" class="debug-field" />
+            <ui:TextField picking-mode="Ignore" label="Chunk" value="filler text" name="player-chunk" readonly="true" class="debug-label debug-field" style="color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="highlight" class="debug-section" style="width: 25%; height: auto;">
+            <ui:Label text="Target" display-tooltip-when-elided="true" name="highlight-title" class="debug-header-1 debug-header" />
+            <ui:TextField picking-mode="Ignore" label="Chunk" value="filler text" name="highlight-chunk" readonly="true" class="debug-field" />
+            <ui:TextField picking-mode="Ignore" label="Voxel" value="filler text" name="highlight-voxel" readonly="true" class="debug-label debug-field" />
+            <ui:TextField picking-mode="Ignore" label="Entity" value="filler text" name="highlight-entity" readonly="true" class="debug-label debug-field" />
+            <ui:TextField picking-mode="Ignore" label="Side" value="filler text" name="highlight-side" readonly="true" class="debug-label debug-field" />
+            <ui:TextField picking-mode="Ignore" label="Block" value="filler text" name="highlight-block" readonly="true" class="debug-label debug-field" />
+            <ui:TextField picking-mode="Ignore" label="State" value="filler text" name="highlight-state" readonly="true" class="debug-label debug-field" />
+        </ui:VisualElement>
+        <ui:VisualElement name="adjacent" class="debug-section" style="width: 25%; height: auto;">
+            <ui:Label text="Adjacent" display-tooltip-when-elided="true" name="adjacent-title" class="debug-header-1 debug-header" />
+            <ui:TextField picking-mode="Ignore" label="Block" value="filler text" name="adjacent-block" readonly="true" class="debug-label debug-field" />
+            <ui:TextField picking-mode="Ignore" label="State" value="filler text" name="adjacent-state" readonly="true" class="debug-label debug-field" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

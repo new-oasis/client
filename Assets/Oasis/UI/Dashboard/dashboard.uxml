@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="/Assets/Oasis/UI/oasis.uss" />
+    <Style src="dashboard.uss" />
+    <Style src="menu.uss" />
+    <Style src="search.uss" />
+    <Style src="slot.uss" />
+    <ui:VisualElement name="dashboard" class="dashboard full-screen" style="display: none;">
+        <ui:VisualElement name="menu" class="main-menu" style="padding-top: 0;">
+            <ui:Button text="\uf015 " display-tooltip-when-elided="true" name="home" class="main-menu-button" />
+            <ui:Button text="\uf1b3" display-tooltip-when-elided="true" name="blocks" class="main-menu-button" />
+            <ui:Button text="\uf03e" display-tooltip-when-elided="true" name="places" class="main-menu-button" />
+            <ui:Button text="\uf5ae" display-tooltip-when-elided="true" name="creator" class="main-menu-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="panels" class="panels">
+            <ui:VisualElement name="home" class="panel" />
+            <ui:VisualElement name="blocks" class="panel">
+                <ui:VisualElement name="header" class="header">
+                    <ui:TextField picking-mode="Ignore" label="\uf002" name="search-blocks" is-delayed="true" class="search" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="contents" class="contents" />
+            </ui:VisualElement>
+            <ui:VisualElement name="places" class="panel">
+                <ui:VisualElement name="header" class="header">
+                    <ui:TextField picking-mode="Ignore" label="\uf002" name="search-places" is-delayed="true" class="search" style="color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="contents" class="contents" />
+            </ui:VisualElement>
+            <ui:VisualElement name="creator" class="panel" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

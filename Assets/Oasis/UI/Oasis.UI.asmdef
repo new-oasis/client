@@ -1,0 +1,27 @@
+{
+    "name": "Oasis.UI",
+    "rootNamespace": "",
+    "references": [
+        "Unity.Mathematics",
+        "Unity.Collections",
+        "Unity.Entities",
+        "UnityEngine.UI",
+        "Unity.Transforms",
+        "Unity.Rendering.Hybrid",
+        "Unity.Transforms.Hybrid",
+        "Unity.Entities.Hybrid",
+        "Oasis.Grpc",
+        "Oasis.Core",
+        "BovineLabs.Event",
+        "UnityEngine.UIElementsModule"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

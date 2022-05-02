@@ -1,0 +1,18 @@
+Catalog
+	Maps where and how to load
+	Download modified catalog
+	Enable 'Build Remote Catalog' on the main AddressableAssetSettings object.
+	Catalog will be built-to and loaded-from the specified paths that cannot change.
+	The content update process creates a new version of the catalog (with the same file name) to overwrite the file at the previously specified load path.
+
+	When you build a Player, a unique Player content version string is generated.
+	This version is used to identify which content catalog each player should load.
+	Thus a given server can contain catalogs of multiple versions of your app without conflict.
+	The version string, along with hash information for each asset that is in a group marked as StaticContent, is stored in the addressables_content_state.bin file.
+	By default, this file is stored in the same folder as your AddressableAssetSettings.asset file.
+
+	The addressables_content_state.bin file contains hash and dependency information for every StaticContent asset group in the Addressables system.
+	All groups buliding to the streaming assets folder should be marked as StaticContent, though remote groups that are large may also benefit from this designation.
+	During the Prepare for Content Update step, this hash information is used to determine if any StaticContent groups contain changed asses, and thus need those assets moved elsewhere.
+
+

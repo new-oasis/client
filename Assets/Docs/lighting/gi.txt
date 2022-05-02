@@ -1,0 +1,39 @@
+GI Systems
+1. Data structure
+	a. how do you store light primitive in a single point?
+		- color constant: lightmap, segi, cubemap GI
+		- SH: LPPV, tetrahedral SH, LPV
+		- surface: enlighten
+	b. How do you store the primitive?
+		- texture: lightmap
+		- graph: tetra SH
+		- volume texture: SEGI, LPV, LPPV
+		- surface lists: enlighten
+		- Cubemap: Cubemap GI
+	c. other possible data structure
+		- binary tree (RTU)
+		- BVH (RTX)
+		- Octree (SVOGI, some HxGI experiment)
+		- cubeface colors (like in Half life 2)
+
+2. Sampling method
+	- texture look up: lightmap, segi, LPV, LPPV, cubemap GI
+	- graph traversal: tetra SH
+	- list of surface: enlighten
+	- raytracing with tree traversal (see 1c except last)
+
+3. Update method
+	- List query: enlighten
+	- propagation: LPV
+	- Cone tracing: SEGI
+	- render scene: cubemap GI
+	- none: LPPV, tetra SH, lightmap
+	- raytracing with tree traversal (see 1c except last)
+
+
+HxGI use SH and has good result even on low hardware, but then it's a LPV method tweaked.
+
+Consider these three points and the trade off they intriduce.
+SEGI is expensive but kinda accurate because:
+- you need to perform voxelization of the scene
+- you cone trace every viewport pixel

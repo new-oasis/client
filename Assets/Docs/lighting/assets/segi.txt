@@ -1,0 +1,35 @@
+SEGI
+
+Steps
+	Voxelization
+		Geometary shader writes volume to 3D texture.
+		Cache/reuse volume if not near edge.
+		Move inside the volume and render based on current location within it...
+		grid of single colors
+	Path tracer
+		Screen space
+		Performance depends on how many times it samples the 3D texture.
+		3D texture is mipmapped.
+		ViewportWidth * ViewportHeight * Cones * ConeTraceSteps...
+
+2. Sampling method
+	- texture look up: lightmap, segi, LPV, LPPV, cubemap GI
+	- graph traversal: tetra SH
+	- list of surface: enlighten
+	- raytracing with tree traversal (see 1c except last)
+
+3. Update method
+	- List query: enlighten
+	- propagation: LPV
+	- Cone tracing: SEGI
+	- render scene: cubemap GI
+	- none: LPPV, tetra SH, lightmap
+	- raytracing with tree traversal (see 1c except last)
+
+
+HxGI use SH and has good result even on low hardware, but then it's a LPV method tweaked.
+
+Consider these three points and the trade off they intriduce.
+SEGI is expensive but kinda accurate because:
+- you need to perform voxelization of the scene
+- you cone trace every viewport pixel

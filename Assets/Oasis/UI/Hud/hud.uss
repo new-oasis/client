@@ -1,0 +1,50 @@
+.toolbar {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+.toolbarSlot {
+    width: 96px;
+    height: 96px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgb(108, 108, 108);
+    border-right-color: rgb(108, 108, 108);
+    border-top-color: rgb(108, 108, 108);
+    border-bottom-color: rgb(108, 108, 108);
+}
+
+.crosshair {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-image: url('/Assets/Oasis/UI/Hud/crosshair.png');
+    width: 64px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    -unity-text-align: upper-center;
+}
+
+.hud {
+    display: none;
+    overflow: visible;
+}
+
+.toolbarSlotActive {
+    width: 96px;
+    height: 96px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgb(173, 229, 92);
+    border-right-color: rgb(173, 229, 92);
+    border-top-color: rgb(173, 229, 92);
+    border-bottom-color: rgb(173, 229, 92);
+}

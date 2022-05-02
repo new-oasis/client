@@ -1,0 +1,29 @@
+Y-Up Left
+	Z away from viewer
+	Rotation clockwise
+
+Y-Up Right
+	Z towards viewer
+	Rotation counter-clockwise
+
+
+
+
+Blender
+	Z-Up Right handed
+OpenGL
+	Both; devs use right handed
+	Minecraft is right handed
+Unity
+	Left handed
+Cubik
+	Right handed
+
+
+
+
+
+Workflow
+	Store both left and right
+
+

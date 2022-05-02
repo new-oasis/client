@@ -1,0 +1,10 @@
+﻿Single create slice function with Compute[BlockState|Textures|Faces] tag
+
+
+ECS Rules
+    Don't chain systems using missing data and ecb.
+        Use ComputeTags
+        This causes one step per frame
+    Use ecb for fire'n'forget systems with no followers
+    Use job deps
+    Structurual changes are add/remove entities or components

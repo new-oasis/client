@@ -1,0 +1,32 @@
+GRPC dlls conflict with those in Unity packages
+
+Options
+1) Copy my DLLs over the Unity package ones
+
+2) Fight and fail to get asmdefs to work
+
+
+Terms
+	Assembly
+		dll
+	Managed Assembly
+		dll
+	Assembly Definition
+		Define DLL
+	Precompiled Assemblies
+		plugins
+	Predefined Assemblies
+		Assembly-CSharp.dll
+
+
+*** USE INSPECTOR TO SEE THE ASSEMBLY TARGET FOR A FILE ***
+
+
+Assemblies
+	Auto Referenced
+		Assembly-CSharp can reference my assembly definitions.
+		Assembly-CSharp and my assembly definitions can automatically reference plugins
+	Explicit reference
+		Enable the Asset’s Override References option and add a reference to the plug-in
+
+

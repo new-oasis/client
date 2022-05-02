@@ -1,0 +1,28 @@
+
+
+
+
+
+BSDF Bidirectional Scattering Distribution Function
+	BRDF = Bidirectional _Reflectance_ Distribution Function
+	BTDF = Bidirectional _Transmittance_ Distribution Function
+
+
+
+
+Light
+	Radiant flux = W|jules emitted
+	irradiance = W/m2  (unit area)
+	radiance = W/(m2*steradians)    (steradians = solid angle)
+	Use Maxwell Equations which explain how waves behave
+
+Math Basics
+	Radians
+		Alternative angle measurement
+		Rotate counter clockwise
+	Trig
+		Angles in right angle triangle. soh cah toa
+		sine = opposite over hypotenuse (edge opposite right angle)
+		cosine = adjacent over hypotenuse
+		tan = opposite over adjacent
+
