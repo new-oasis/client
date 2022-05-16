@@ -45,6 +45,8 @@ public class Toolbar : MonoBehaviour
         var slot = slots.AtIndex(slotIndex);
         var image = new Image();
         image.image = blockImage;
+        if (slot.childCount > 0)
+            slot.RemoveAt(0);
         slot.Add(image);
     }
 

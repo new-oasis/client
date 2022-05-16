@@ -67,7 +67,6 @@ namespace Oasis.Core
                             Side side = (Side)(slice.Axis % 6);
                             aTexture = ComputeTexture(aBlockState, side);
                         }
-                        Debug.Log($"a: {aIsAlphaClipCube} {bIsAlphaClipCube}");
                         
                         // Back faces
                         if ((bIsOpaqueCube && !aIsOpaqueCube) ||
@@ -78,7 +77,6 @@ namespace Oasis.Core
                             Side side = (Side)(3+slice.Axis % 6);
                             bTexture = ComputeTexture(bBlockState, side);
                         }
-                        Debug.Log($"b: {bIsAlphaClipCube} {aIsAlphaClipCube}");
                         
                         aTextures.Add(aTexture);
                         bTextures.Add(bTexture);
