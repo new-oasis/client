@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Oasis.Core;
 using Unity.Entities;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Oasis.Core
 {
@@ -61,21 +62,23 @@ namespace Oasis.Core
                         if ((aIsOpaqueCube && !bIsOpaqueCube) ||
                             (aIsTransCube && !bIsTransCube && !bIsOpaqueCube) ||
                             (aIsLiquid && !bIsLiquid && !bIsOpaqueCube) ||
-                            (aIsAlphaClipCube && !bIsOpaqueCube))
+                            (aIsAlphaClipCube && !bIsAlphaClipCube && !bIsOpaqueCube))
                         {
                             Side side = (Side)(slice.Axis % 6);
                             aTexture = ComputeTexture(aBlockState, side);
                         }
+                        Debug.Log($"a: {aIsAlphaClipCube} {bIsAlphaClipCube}");
                         
                         // Back faces
                         if ((bIsOpaqueCube && !aIsOpaqueCube) ||
                             (bIsTransCube && !aIsTransCube && !aIsOpaqueCube) ||
                             (bIsLiquid && !aIsLiquid && !aIsOpaqueCube) ||
-                            (bIsAlphaClipCube && !aIsOpaqueCube))
+                            (bIsAlphaClipCube && !aIsAlphaClipCube && !aIsOpaqueCube))
                         {
                             Side side = (Side)(3+slice.Axis % 6);
                             bTexture = ComputeTexture(bBlockState, side);
                         }
+                        Debug.Log($"b: {bIsAlphaClipCube} {aIsAlphaClipCube}");
                         
                         aTextures.Add(aTexture);
                         bTextures.Add(bTexture);
