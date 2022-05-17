@@ -9,4 +9,7 @@ public struct FirstPersonPlayer : IComponentData
 {
     public Entity ControlledCharacter;
     public float RotationSpeed;
+
+    [NonSerialized]
+    public uint LastInputsProcessingTick;
 }

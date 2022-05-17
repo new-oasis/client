@@ -47,13 +47,13 @@ public static class FirstPersonCharacterUtilities
 
     public static void ComputeFinalRotationsFromRotationDelta(
         ref quaternion characterRotation,
-        ref quaternion localCharacterViewRotation,
         ref float viewPitchDegrees,
         float2 yawPitchDeltaDegrees,
         float viewRollDegrees,
         float minPitchDegrees,
         float maxPitchDegrees,
-        out float canceledPitchDegrees)
+        out float canceledPitchDegrees,
+        out quaternion localCharacterViewRotation)
     {
         // Yaw
         quaternion yawRotation = quaternion.Euler(math.up() * math.radians(yawPitchDeltaDegrees.x));

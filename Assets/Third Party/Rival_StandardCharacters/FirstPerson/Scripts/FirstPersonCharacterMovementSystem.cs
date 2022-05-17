@@ -29,8 +29,8 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
         public ComponentDataFromEntity<PhysicsVelocity> PhysicsVelocityFromEntity;
         [ReadOnly]
         public ComponentDataFromEntity<PhysicsMass> PhysicsMassFromEntity;
-        [NativeDisableParallelForRestriction] // we need to write to our own characterBody, but we might also need to read from other characterBodies during the update (for dynamics handling)
-        public ComponentDataFromEntity<KinematicCharacterBody> CharacterBodyFromEntity;
+        [ReadOnly]
+        public ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> StoredKinematicCharacterBodyPropertiesFromEntity;
         [ReadOnly]
         public ComponentDataFromEntity<TrackedTransform> TrackedTransformFromEntity;
 
@@ -38,6 +38,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
         public EntityTypeHandle EntityType;
         public ComponentTypeHandle<Translation> TranslationType;
         public ComponentTypeHandle<Rotation> RotationType;
+        public ComponentTypeHandle<KinematicCharacterBody> KinematicCharacterBodyType;
         public ComponentTypeHandle<PhysicsCollider> PhysicsColliderType;
         public BufferTypeHandle<KinematicCharacterHit> CharacterHitsBufferType;
         public BufferTypeHandle<KinematicVelocityProjectionHit> VelocityProjectionHitsBufferType;
@@ -45,6 +46,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
         public BufferTypeHandle<StatefulKinematicCharacterHit> StatefulCharacterHitsBufferType;
 
         public ComponentTypeHandle<FirstPersonCharacterComponent> FirstPersonCharacterType;
+        [ReadOnly]
         public ComponentTypeHandle<FirstPersonCharacterInputs> FirstPersonCharacterInputsType;
 
         [NativeDisableContainerSafetyRestriction]
@@ -61,6 +63,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
             NativeArray<Entity> chunkEntities = chunk.GetNativeArray(EntityType);
             NativeArray<Translation> chunkTranslations = chunk.GetNativeArray(TranslationType);
             NativeArray<Rotation> chunkRotations = chunk.GetNativeArray(RotationType);
+            NativeArray<KinematicCharacterBody> chunkCharacterBodies = chunk.GetNativeArray(KinematicCharacterBodyType);
             NativeArray<PhysicsCollider> chunkPhysicsColliders = chunk.GetNativeArray(PhysicsColliderType);
             BufferAccessor<KinematicCharacterHit> chunkCharacterHitBuffers = chunk.GetBufferAccessor(CharacterHitsBufferType);
             BufferAccessor<KinematicVelocityProjectionHit> chunkVelocityProjectionHitBuffers = chunk.GetBufferAccessor(VelocityProjectionHitsBufferType);
@@ -91,7 +94,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
             FirstPersonCharacterProcessor processor = default;
             processor.DeltaTime = DeltaTime;
             processor.CollisionWorld = CollisionWorld;
-            processor.CharacterBodyFromEntity = CharacterBodyFromEntity;
+            processor.StoredKinematicCharacterBodyPropertiesFromEntity = StoredKinematicCharacterBodyPropertiesFromEntity;
             processor.PhysicsMassFromEntity = PhysicsMassFromEntity;
             processor.PhysicsVelocityFromEntity = PhysicsVelocityFromEntity;
             processor.TrackedTransformFromEntity = TrackedTransformFromEntity;
@@ -110,7 +113,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
                 processor.Translation = chunkTranslations[i].Value;
                 processor.Rotation = chunkRotations[i].Value;
                 processor.PhysicsCollider = chunkPhysicsColliders[i];
-                processor.CharacterBody = CharacterBodyFromEntity[entity];
+                processor.CharacterBody = chunkCharacterBodies[i];
                 processor.CharacterHitsBuffer = chunkCharacterHitBuffers[i];
                 processor.CharacterDeferredImpulsesBuffer = chunkCharacterDeferredImpulsesBuffers[i];
                 processor.VelocityProjectionHitsBuffer = chunkVelocityProjectionHitBuffers[i];
@@ -125,10 +128,9 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
                 // The core character update loop only writes to Translation, Rotation, KinematicCharacterBody, and the various character DynamicBuffers. 
                 // You must remember to write back any extra data you modify in your own code
                 chunkTranslations[i] = new Translation { Value = processor.Translation };
-                CharacterBodyFromEntity[entity] = processor.CharacterBody;
+                chunkCharacterBodies[i] = processor.CharacterBody;
                 chunkPhysicsColliders[i] = processor.PhysicsCollider; // safe to remove if not needed. This would be needed if you resize the character collider, for example
                 chunkFirstPersonCharacters[i] = processor.FirstPersonCharacter; // safe to remove if not needed. This would be needed if you changed data in your own character component
-                chunkFirstPersonCharacterInputs[i] = processor.FirstPersonCharacterInputs; // safe to remove if not needed. This would be needed if you changed data in your own character component
             }
         }
     }
@@ -168,12 +170,13 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
 
             PhysicsVelocityFromEntity = GetComponentDataFromEntity<PhysicsVelocity>(true),
             PhysicsMassFromEntity = GetComponentDataFromEntity<PhysicsMass>(true),
-            CharacterBodyFromEntity = GetComponentDataFromEntity<KinematicCharacterBody>(false),
+            StoredKinematicCharacterBodyPropertiesFromEntity = GetComponentDataFromEntity<StoredKinematicCharacterBodyProperties>(true),
             TrackedTransformFromEntity = GetComponentDataFromEntity<TrackedTransform>(true),
 
             EntityType = GetEntityTypeHandle(),
             TranslationType = GetComponentTypeHandle<Translation>(false),
             RotationType = GetComponentTypeHandle<Rotation>(false),
+            KinematicCharacterBodyType = GetComponentTypeHandle<KinematicCharacterBody>(false),
             PhysicsColliderType = GetComponentTypeHandle<PhysicsCollider>(false),
             CharacterHitsBufferType = GetBufferTypeHandle<KinematicCharacterHit>(false),
             VelocityProjectionHitsBufferType = GetBufferTypeHandle<KinematicVelocityProjectionHit>(false),
@@ -181,7 +184,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
             StatefulCharacterHitsBufferType = GetBufferTypeHandle<StatefulKinematicCharacterHit>(false),
 
             FirstPersonCharacterType = GetComponentTypeHandle<FirstPersonCharacterComponent>(false),
-            FirstPersonCharacterInputsType = GetComponentTypeHandle<FirstPersonCharacterInputs>(false),
+            FirstPersonCharacterInputsType = GetComponentTypeHandle<FirstPersonCharacterInputs>(true),
         }.ScheduleParallel(CharacterQuery, Dependency);
 
         Dependency = KinematicCharacterUtilities.ScheduleDeferredImpulsesJob(this, CharacterQuery, Dependency);

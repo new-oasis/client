@@ -11,13 +11,23 @@ using Rival;
 [UpdateBefore(typeof(FixedStepSimulationSystemGroup))]
 public partial class FirstPersonPlayerSystem : SystemBase
 {
+    public FixedUpdateTickSystem FixedUpdateTickSystem;
+    
     public float2 moveInput;
     public float2 lookInput;
     public bool jumpInput;
-    
+
+
+    protected override void OnCreate()
+    {
+        base.OnCreate();
+
+        FixedUpdateTickSystem = World.GetOrCreateSystem<FixedUpdateTickSystem>();
+    }
+
     protected override void OnUpdate()
     {
-        float deltaTime = Time.DeltaTime;
+        uint fixedTick = FixedUpdateTickSystem.FixedTick;
 
         // Gather input
         moveInput = float2.zero;
@@ -36,6 +46,7 @@ public partial class FirstPersonPlayerSystem : SystemBase
                 {
                     FirstPersonCharacterInputs characterInputs = GetComponent<FirstPersonCharacterInputs>(player.ControlledCharacter);
                     FirstPersonCharacterComponent character = GetComponent<FirstPersonCharacterComponent>(player.ControlledCharacter);
+
                     quaternion characterRotation = GetComponent<LocalToWorld>(player.ControlledCharacter).Rotation;
                     quaternion localCharacterViewRotation = GetComponent<Rotation>(character.CharacterViewEntity).Value;
 
@@ -49,16 +60,22 @@ public partial class FirstPersonPlayerSystem : SystemBase
                     characterInputs.MoveVector = Rival.MathUtilities.ClampToMaxLength(characterInputs.MoveVector, 1f);
 
                     // Jump
-                    if (jumpInput)
+                    // Punctual input presses need special handling when they will be used in a fixed step system.
+                    // We essentially need to remember if the button was pressed at any point over the last fixed update
+                    if (player.LastInputsProcessingTick == fixedTick)
+                    {
+                        characterInputs.JumpRequested = jumpInput || characterInputs.JumpRequested;
+                    }
+                    else
                     {
                         characterInputs.JumpRequested = jumpInput;
                     }
 
+                    player.LastInputsProcessingTick = fixedTick;
+
                     SetComponent(player.ControlledCharacter, characterInputs);
                 }
-            })
-            // .Schedule();
-            .WithoutBurst()
-            .Run();
+            }).WithoutBurst().Run();
+            // }).Schedule();
     }
 }

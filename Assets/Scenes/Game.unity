@@ -755,10 +755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bdfa6cf1ae7254ebe7b7fa31270eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 3
+  distance: 2
   height: 1
   defaultPlace: 0
-  gravity: -1
+  gravity: -5
 --- !u!114 &545554624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &707068470
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,13 +1145,14 @@ GameObject:
   m_Component:
   - component: {fileID: 715859219}
   - component: {fileID: 715859220}
+  - component: {fileID: 715859221}
   m_Layer: 0
   m_Name: Trans
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &715859219
 Transform:
   m_ObjectHideFlags: 0
@@ -1173,13 +1174,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715859218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   domain: minecraft
   name: glass
+  lit: 0
+  states: []
+--- !u!114 &715859221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715859218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  domain: minecraft
+  name: red_stained_glass
   lit: 0
   states: []
 --- !u!1 &774391652
@@ -2019,7 +2036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1158963688
 Transform:
   m_ObjectHideFlags: 0

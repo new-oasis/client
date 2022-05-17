@@ -39,6 +39,8 @@ public struct FirstPersonCharacterComponent : IComponentData
     public Entity CharacterViewEntity;
     [HideInInspector]
     public float ViewPitchDegrees;
+    [HideInInspector]
+    public float3 GroundingUp;
 
     public static FirstPersonCharacterComponent GetDefault()
     {
@@ -65,6 +67,8 @@ public struct FirstPersonCharacterComponent : IComponentData
             MaxVAngle = 90f,
 
             ConstrainVelocityToGroundPlane = true,
+
+            GroundingUp = math.up(),
         };
     }
 }

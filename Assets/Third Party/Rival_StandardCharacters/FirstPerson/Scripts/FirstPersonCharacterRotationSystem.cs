@@ -12,10 +12,13 @@ using Rival;
 [UpdateBefore(typeof(TransformSystemGroup))]
 public partial class FirstPersonCharacterRotationSystem : SystemBase
 {
+    public FixedStepSimulationSystemGroup FixedStepSimulationSystemGroup;
     public EntityQuery CharacterQuery;
 
     protected override void OnCreate()
     {
+        FixedStepSimulationSystemGroup = World.GetOrCreateSystem<FixedStepSimulationSystemGroup>();
+
         CharacterQuery = GetEntityQuery(new EntityQueryDesc
         {
             All = MiscUtilities.CombineArrays(
@@ -33,7 +36,7 @@ public partial class FirstPersonCharacterRotationSystem : SystemBase
     protected unsafe override void OnUpdate()
     {
         float deltaTime = Time.DeltaTime;
-        float fixedDeltaTime = World.GetOrCreateSystem<FixedStepSimulationSystemGroup>().RateManager.Timestep;
+        float fixedDeltaTime = FixedStepSimulationSystemGroup.RateManager.Timestep;
 
         Entities.ForEach((
             Entity entity,
@@ -44,26 +47,21 @@ public partial class FirstPersonCharacterRotationSystem : SystemBase
         {
             Rotation characterRotation = GetComponent<Rotation>(entity);
             Rotation localViewRotation = GetComponent<Rotation>(character.CharacterViewEntity);
-            float3 characterUp = math.mul(characterRotation.Value, math.up());
-            float3 characterRight = math.mul(characterRotation.Value, math.right());
 
             // Compute character & view rotations from rotation input
             FirstPersonCharacterUtilities.ComputeFinalRotationsFromRotationDelta(
                 ref characterRotation.Value,
-                ref localViewRotation.Value,
                 ref character.ViewPitchDegrees,
                 characterInputs.LookYawPitchDegrees,
                 0f,
                 character.MinVAngle,
                 character.MaxVAngle,
-                out float canceledPitchDegrees);
+                out float canceledPitchDegrees,
+                out localViewRotation.Value);
 
             // Add rotation from parent body to the character rotation
-            // (this is for allowing a rotating moving platform to rotate your character as well)
+            // (this is for allowing a rotating moving platform to rotate your character as well, and handle interpolation properly)
             KinematicCharacterUtilities.ApplyParentRotationToTargetRotation(ref characterRotation.Value, in characterBody, fixedDeltaTime, deltaTime);
-
-            // Prevent rotation interpolation
-            characterInterpolation.SkipNextRotationInterpolation();
 
             // Apply character & view rotations
             SetComponent(entity, characterRotation);

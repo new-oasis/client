@@ -44,7 +44,7 @@ namespace Rival
     public interface IKinematicCharacterProcessor
     {
         CollisionWorld GetCollisionWorld { get; }
-        ComponentDataFromEntity<KinematicCharacterBody> GetCharacterBodyFromEntity { get; }
+        ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> GetStoredCharacterBodyPropertiesFromEntity { get; }
         ComponentDataFromEntity<PhysicsMass> GetPhysicsMassFromEntity { get; }
         ComponentDataFromEntity<PhysicsVelocity> GetPhysicsVelocityFromEntity { get; }
         ComponentDataFromEntity<TrackedTransform> GetTrackedTransformFromEntity { get; }
@@ -193,6 +193,7 @@ namespace Rival
                 typeof(PhysicsVelocity),
                 typeof(PhysicsMass),
                 typeof(KinematicCharacterBody),
+                typeof(StoredKinematicCharacterBodyProperties),
                 typeof(KinematicCharacterHit),
                 typeof(KinematicVelocityProjectionHit),
                 typeof(KinematicCharacterDeferredImpulse),
@@ -213,6 +214,8 @@ namespace Rival
         {
             // Base character components
             dstManager.AddComponentData(entity, new KinematicCharacterBody(authoringProperties));
+            dstManager.AddComponentData(entity, new StoredKinematicCharacterBodyProperties());
+
             var characterHitsBuffer = dstManager.AddBuffer<KinematicCharacterHit>(entity);
             var velocityProjectionHitsBuffer = dstManager.AddBuffer<KinematicVelocityProjectionHit>(entity);
             var deferredImpulsesBuffer = dstManager.AddBuffer<KinematicCharacterDeferredImpulse>(entity);
@@ -248,6 +251,8 @@ namespace Rival
         {
             // Base character components
             commandBuffer.AddComponent(entity, new KinematicCharacterBody(authoringProperties));
+            commandBuffer.AddComponent(entity, new StoredKinematicCharacterBodyProperties());
+
             var characterHitsBuffer = commandBuffer.AddBuffer<KinematicCharacterHit>(entity);
             var velocityProjectionHitsBuffer = commandBuffer.AddBuffer<KinematicVelocityProjectionHit>(entity);
             var deferredImpulsesBuffer = commandBuffer.AddBuffer<KinematicCharacterDeferredImpulse>(entity);
@@ -364,20 +369,31 @@ namespace Rival
             {
                 TrackedTransform parentTrackedTransform = trackedTransformFromEntity[characterBody.ParentEntity];
 
-                // Calculate new rotation
-                quaternion initialRotation = characterRotation;
-                quaternion previousLocalRotation = math.mul(math.inverse(parentTrackedTransform.PreviousFixedRateTransform.rot), initialRotation);
-                quaternion newRotation = math.mul(parentTrackedTransform.CurrentFixedRateTransform.rot, previousLocalRotation);
+                // Translation
+                float3 previousLocalTranslation = math.transform(math.inverse(parentTrackedTransform.PreviousFixedRateTransform), characterTranslation);
+                float3 targetTranslation = math.transform(parentTrackedTransform.CurrentFixedRateTransform, previousLocalTranslation);
+
+                // Anchor point
+                float3 previousLocalAnchorPoint = math.transform(math.inverse(parentTrackedTransform.PreviousFixedRateTransform), characterBody.ParentAnchorPoint);
+                float3 targetAnchorPoint = math.transform(parentTrackedTransform.CurrentFixedRateTransform, previousLocalAnchorPoint);
+
+                // Rotation
+                quaternion previousLocalRotation = math.mul(math.inverse(parentTrackedTransform.PreviousFixedRateTransform.rot), characterRotation);
+                quaternion targetRotation = math.mul(parentTrackedTransform.CurrentFixedRateTransform.rot, previousLocalRotation);
+
+                // Rotation up correction
                 if (constrainRotationToGroundingUp)
                 {
-                    newRotation = MathUtilities.CreateRotationWithUpPriority(groundingUp, MathUtilities.GetForwardFromRotation(newRotation));
+                    quaternion correctedRotation = MathUtilities.CreateRotationWithUpPriority(groundingUp, MathUtilities.GetForwardFromRotation(targetRotation));
+                    MathUtilities.SetRotationAroundPoint(ref targetRotation, ref targetTranslation, targetAnchorPoint, correctedRotation);
                 }
-                characterBody.RotationFromParent = math.mul(math.inverse(initialRotation), newRotation);
 
-                // Move with parent displacement
-                float3 displacementFromParentMovement = parentTrackedTransform.CalculatePointDisplacement(characterTranslation);
-                characterBody.ParentVelocity = displacementFromParentMovement / deltaTime;
+                // Store data about parent movement
+                float3 displacementFromParentMovement = targetTranslation - characterTranslation;
+                characterBody.ParentVelocity = (targetAnchorPoint - characterBody.ParentAnchorPoint) / deltaTime;
+                characterBody.RotationFromParent = math.mul(math.inverse(characterRotation), targetRotation);
 
+                // Move translation
                 if (characterBody.DetectMovementCollisions &&
                     characterBody.DetectObstructionsForParentBodyMovement &&
                     math.lengthsq(displacementFromParentMovement) > math.EPSILON)
@@ -629,8 +645,7 @@ namespace Rival
                 // Handle preserving momentum from previous parent when there has been a parent change
                 if (characterBody.PreviousParentEntity != Entity.Null)
                 {
-                    TrackedTransform previousParentTrackedTransform = trackedTransformFromEntity[characterBody.PreviousParentEntity];
-                    characterBody.RelativeVelocity += previousParentTrackedTransform.CalculatePointVelocity(characterTranslation, deltaTime);
+                    characterBody.RelativeVelocity += characterBody.ParentVelocity;
                 }
 
                 // Handle compensating momentum for new parent body
@@ -779,70 +794,58 @@ namespace Rival
 
             if (FilterColliderCastHitsForGroundProbing(ref processor, ref tmpColliderCastHits, characterBody.ShouldIgnoreDynamicBodies(), characterEntity, -groundingUp, out ColliderCastHit closestHit))
             {
-                float closestHitDistance = closestHit.Fraction * groundProbingLength;
-                ColliderCastHit closestGroundedHit = default;
-                float closestGroundedHitDistance = float.MaxValue;
-
+                // Ground hit is closest hit by default
                 groundHit = new BasicHit(closestHit);
+                distanceToGround = closestHit.Fraction * groundProbingLength;
 
-                // Check closest hit grounding
-                BasicHit tmpClosestHit = new BasicHit(closestHit);
-                bool isGroundedOnClosestHit = false;
+                // Check grounding status
                 if (characterBody.EvaluateGrounding)
                 {
-                    isGroundedOnClosestHit = processor.IsGroundedOnHit(in tmpClosestHit, (int)GroundingEvaluationType.GroundProbing);
-                }
-
-                if (isGroundedOnClosestHit)
-                {
-                    closestGroundedHit = closestHit;
-                    closestGroundedHitDistance = closestHitDistance;
-                }
-
-                // If the closest hit wasn't grounded but other hits were detected, try to find the closest grounded hit within tolerance range
-                if (!isGroundedOnClosestHit && tmpColliderCastHits.Length > 1)
-                {
-                    // Sort hits in ascending fraction order
-                    // We are doing a sort because, presumably, it would be faster to sort & have potentially less hits to evaluate for grounding
-                    tmpColliderCastHits.Sort(default(HitFractionComparer));
-
-                    // todo; can we optimize this? There's a chance we will re-evaluate the closestHit by doing this, but we can't just start at index 1 because there could have been multiple hits with fraction 0f
-                    for (int i = 0; i < tmpColliderCastHits.Length; i++)
+                    bool isGroundedOnClosestHit = processor.IsGroundedOnHit(in groundHit, (int)GroundingEvaluationType.GroundProbing);
+                    if (isGroundedOnClosestHit)
                     {
-                        ColliderCastHit tmpHit = tmpColliderCastHits[i];
-
-                        //Only accept if within tolerance distance
-                        float tmpHitDistance = tmpHit.Fraction * groundProbingLength;
-                        if (math.distancesq(tmpHitDistance, closestHitDistance) <= Constants.GroundedHitDistanceToleranceSq)
+                        isGrounded = true;
+                    }
+                    else
+                    {
+                        // If the closest hit wasn't grounded but other hits were detected, try to find the closest grounded hit within tolerance range
+                        if (tmpColliderCastHits.Length > 1)
                         {
-                            // Accept grounded hit (first one is closest)
-                            bool isGroundedOnHit = false;
-                            BasicHit tmpClosestGroundedHit = new BasicHit(tmpHit);
-                            if (characterBody.EvaluateGrounding)
-                            {
-                                isGroundedOnHit = processor.IsGroundedOnHit(in tmpClosestGroundedHit, (int)GroundingEvaluationType.GroundProbing);
-                            }
+                            // Sort hits in ascending fraction order
+                            // TODO: We are doing a sort because, presumably, it would be faster to sort & have potentially less hits to evaluate for grounding
+                            tmpColliderCastHits.Sort(default(HitFractionComparer));
 
-                            if (isGroundedOnHit)
+                            for (int i = 0; i < tmpColliderCastHits.Length; i++)
                             {
-                                closestGroundedHit = tmpHit;
-                                closestGroundedHitDistance = tmpHitDistance;
+                                ColliderCastHit tmpHit = tmpColliderCastHits[i];
+
+                                // Skip if this is our ground hit
+                                if (tmpHit.RigidBodyIndex == groundHit.RigidBodyIndex && 
+                                    tmpHit.ColliderKey.Equals(groundHit.ColliderKey))
+                                    continue;
+
+                                //Only accept if within tolerance distance
+                                float tmpHitDistance = tmpHit.Fraction * groundProbingLength;
+                                if (math.distancesq(tmpHitDistance, distanceToGround) <= Constants.GroundedHitDistanceToleranceSq)
+                                {
+                                    BasicHit tmpClosestGroundedHit = new BasicHit(tmpHit);
+                                    bool isGroundedOnHit = processor.IsGroundedOnHit(in tmpClosestGroundedHit, (int)GroundingEvaluationType.GroundProbing);
+                                    if (isGroundedOnHit)
+                                    {
+                                        isGrounded = true;
+                                        distanceToGround = tmpHitDistance;
+                                        groundHit = tmpClosestGroundedHit; 
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    // if we're starting to see hits with a distance greater than tolerance dist, give up trying to evaluate hits since the list is sorted in ascending fraction order
+                                    break;
+                                }
                             }
-                        }
-                        else
-                        {
-                            // if we're starting to see hits with a distance greater than tolerance dist, give up trying to evaluate hits since the list is sorted in ascending fraction order
-                            break;
                         }
                     }
-                }
-
-                // if we have hit a grounded surface, update grounding
-                if (closestGroundedHit.Entity != Entity.Null)
-                {
-                    isGrounded = true;
-                    groundHit.Normal = closestGroundedHit.SurfaceNormal;
-                    distanceToGround = closestGroundedHitDistance;
                 }
             }
         }
@@ -857,7 +860,7 @@ namespace Rival
         {
             CollisionWorld collisionWorld = processor.GetCollisionWorld;
             NativeList<int> tmpRigidbodyIndexesProcessed = processor.GetTmpRigidbodyIndexesProcessed;
-            ComponentDataFromEntity<KinematicCharacterBody> characterBodyFromEntity = processor.GetCharacterBodyFromEntity;
+            ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> characterBodyPropertiesFromEntity = processor.GetStoredCharacterBodyPropertiesFromEntity;
             ComponentDataFromEntity<PhysicsMass> physicsMassFromEntity = processor.GetPhysicsMassFromEntity;
             ComponentDataFromEntity<PhysicsVelocity> physicsVelocityFromEntity = processor.GetPhysicsVelocityFromEntity;
 
@@ -887,12 +890,12 @@ namespace Rival
                                 float bodyTrueMassAtPoint = math.INFINITY;
                                 float bodyEffectiveMassAtPoint = math.INFINITY;
                                 bool hitBodyIsCharacter = false;
-                                KinematicCharacterBody hitCharacterBody = default;
+                                StoredKinematicCharacterBodyProperties hitCharacterBodyProperties = default;
 
-                                if (characterBodyFromEntity.HasComponent(hitBodyEntity))
+                                if (characterBodyPropertiesFromEntity.HasComponent(hitBodyEntity))
                                 {
                                     hitBodyIsCharacter = true;
-                                    hitCharacterBody = characterBodyFromEntity[hitBodyEntity];
+                                    hitCharacterBodyProperties = characterBodyPropertiesFromEntity[hitBodyEntity];
                                 }
 
                                 // Correct the normal of the hit based on grounding considerations
@@ -909,9 +912,9 @@ namespace Rival
                                 // Calculate properties of the hit entity (depends on whether it's a character or rigidbody)
                                 if (hitBodyIsCharacter)
                                 {
-                                    hitBodyIsDynamic = hitCharacterBody.SimulateDynamicBody;
-                                    bodyPointVelocity = hitCharacterBody.RelativeVelocity;
-                                    bodyTrueMassAtPoint = hitCharacterBody.Mass;
+                                    hitBodyIsDynamic = hitCharacterBodyProperties.SimulateDynamicBody;
+                                    bodyPointVelocity = hitCharacterBodyProperties.RelativeVelocity;
+                                    bodyTrueMassAtPoint = hitCharacterBodyProperties.Mass;
 
                                     float modifiedMass = bodyTrueMassAtPoint;
                                     processor.OverrideDynamicHitMasses(ref selfEffectiveMass, ref modifiedMass, characterEntity, hitBodyEntity, hitBodyIndex, true);
@@ -1758,6 +1761,7 @@ namespace Rival
             {
                 bool hitAccepted = false;
                 var hit = hits[i];
+
                 if (hit.Entity != characterEntity)
                 {
                     // ignore hits if we're going away from them
@@ -2373,7 +2377,7 @@ namespace Rival
                 return false;
             }
 
-            public static bool CanCollideWithHit(in BasicHit hit, in ComponentDataFromEntity<KinematicCharacterBody> characterBodyFromEntity)
+            public static bool CanCollideWithHit(in BasicHit hit, in ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> storedCharacterBodyFromEntity)
             {
                 // Only collide with collidable colliders
                 if (hit.Material.CollisionResponse == CollisionResponsePolicy.Collide ||
@@ -2383,7 +2387,7 @@ namespace Rival
                 }
 
                 // If collider's collision response is Trigger or None, it could potentially be a Character. So make a special exception in that case
-                if (characterBodyFromEntity.HasComponent(hit.Entity))
+                if (storedCharacterBodyFromEntity.HasComponent(hit.Entity))
                 {
                     return true;
                 }
@@ -2557,18 +2561,20 @@ namespace Rival
 
             public static void MovingPlatformDetection(
                 ref ComponentDataFromEntity<TrackedTransform> trackedTransformFromEntity,
-                ref ComponentDataFromEntity<KinematicCharacterBody> characterBodyFromEntity,
+                ref ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> storedCharacterBodyFromEntity,
                 ref KinematicCharacterBody characterBody)
             {
                 if (characterBody.IsGrounded &&
                     trackedTransformFromEntity.HasComponent(characterBody.GroundHit.Entity) &&
-                    !characterBodyFromEntity.HasComponent(characterBody.GroundHit.Entity))
+                    !storedCharacterBodyFromEntity.HasComponent(characterBody.GroundHit.Entity))
                 {
                     characterBody.ParentEntity = characterBody.GroundHit.Entity;
+                    characterBody.ParentAnchorPoint = characterBody.GroundHit.Position;
                 }
                 else
                 {
                     characterBody.ParentEntity = Entity.Null;
+                    characterBody.ParentAnchorPoint = default;
                 }
             }
 

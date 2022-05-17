@@ -138,9 +138,9 @@ MonoBehaviour:
     z: 2
   m_PrimitiveOrientation:
     Value:
-      x: -90
+      x: 90
       y: 0
-      z: -90
+      z: 0
     RotationOrder: 4
   m_Capsule:
     Height: 2
@@ -319,6 +319,10 @@ MonoBehaviour:
     MaxVAngle: 89
     ConstrainVelocityToGroundPlane: 1
     ViewPitchDegrees: 0
+    GroundingUp:
+      x: 0
+      y: 0
+      z: 0
 --- !u!1 &3463604651959167738
 GameObject:
   m_ObjectHideFlags: 0

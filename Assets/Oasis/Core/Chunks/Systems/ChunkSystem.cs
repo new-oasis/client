@@ -14,7 +14,7 @@ namespace Oasis.Core
 {
 
     [UpdateInGroup(typeof(ChunkGroup))]
-    [UpdateAfter(typeof(ChunkVisible))]
+    // [UpdateAfter(typeof(ChunkVisible))]
     public partial class ChunkSystem : SystemBase
     {
         public NativeHashMap<int3, Entity> _entities;

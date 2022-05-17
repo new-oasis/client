@@ -119,6 +119,8 @@ namespace Rival
         [HideInInspector]
         public float3 ParentVelocity;
         [HideInInspector]
+        public float3 ParentAnchorPoint;
+        [HideInInspector]
         public quaternion RotationFromParent;
         [HideInInspector]
         public Entity PreviousParentEntity;
@@ -149,6 +151,7 @@ namespace Rival
             ParentEntity = default;
             GroundHit = default;
             ParentVelocity = default;
+            ParentAnchorPoint = default;
             RotationFromParent = quaternion.identity;
             PreviousParentEntity = default;
             WasGroundedBeforeCharacterUpdate = default;
@@ -188,7 +191,24 @@ namespace Rival
         }
     }
 
-    [Serializable]
+    [System.Serializable]
+    public struct StoredKinematicCharacterBodyProperties : IComponentData
+    {
+        public bool SimulateDynamicBody;
+        public float Mass;
+        public float3 RelativeVelocity;
+        public float3 ParentVelocity;
+
+        public void FromCharacterBody(in KinematicCharacterBody characterBody)
+        {
+            SimulateDynamicBody = characterBody.SimulateDynamicBody;
+            Mass = characterBody.Mass;
+            RelativeVelocity = characterBody.RelativeVelocity;
+            ParentVelocity = characterBody.ParentVelocity;
+        }
+    }
+
+        [Serializable]
     [InternalBufferCapacity(1)]
     public struct KinematicCharacterDeferredImpulse : IBufferElementData
     {

@@ -12,7 +12,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
     public float DeltaTime;
     public CollisionWorld CollisionWorld;
 
-    public ComponentDataFromEntity<KinematicCharacterBody> CharacterBodyFromEntity;
+    public ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> StoredKinematicCharacterBodyPropertiesFromEntity;
     public ComponentDataFromEntity<PhysicsMass> PhysicsMassFromEntity;
     public ComponentDataFromEntity<PhysicsVelocity> PhysicsVelocityFromEntity;
     public ComponentDataFromEntity<TrackedTransform> TrackedTransformFromEntity;
@@ -25,7 +25,6 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
     public Entity Entity;
     public float3 Translation;
     public quaternion Rotation;
-    public float3 GroundingUp;
     public PhysicsCollider PhysicsCollider;
     public KinematicCharacterBody CharacterBody;
     public FirstPersonCharacterComponent FirstPersonCharacter;
@@ -38,7 +37,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
 
     #region Processor Getters
     public CollisionWorld GetCollisionWorld => CollisionWorld;
-    public ComponentDataFromEntity<KinematicCharacterBody> GetCharacterBodyFromEntity => CharacterBodyFromEntity;
+    public ComponentDataFromEntity<StoredKinematicCharacterBodyProperties> GetStoredCharacterBodyPropertiesFromEntity => StoredKinematicCharacterBodyPropertiesFromEntity;
     public ComponentDataFromEntity<PhysicsMass> GetPhysicsMassFromEntity => PhysicsMassFromEntity;
     public ComponentDataFromEntity<PhysicsVelocity> GetPhysicsVelocityFromEntity => PhysicsVelocityFromEntity;
     public ComponentDataFromEntity<TrackedTransform> GetTrackedTransformFromEntity => TrackedTransformFromEntity;
@@ -51,7 +50,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
     #region Processor Callbacks
     public bool CanCollideWithHit(in BasicHit hit)
     {
-        return KinematicCharacterUtilities.DefaultMethods.CanCollideWithHit(in hit, in CharacterBodyFromEntity);
+        return KinematicCharacterUtilities.DefaultMethods.CanCollideWithHit(in hit, in StoredKinematicCharacterBodyPropertiesFromEntity);
     }
 
     public bool IsGroundedOnHit(in BasicHit hit, int groundingEvaluationType)
@@ -62,7 +61,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             in CharacterBody,
             in PhysicsCollider,
             Entity,
-            GroundingUp,
+            FirstPersonCharacter.GroundingUp,
             groundingEvaluationType,
             FirstPersonCharacter.StepHandling,
             FirstPersonCharacter.MaxStepHeight,
@@ -87,7 +86,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             in PhysicsCollider,
             Entity,
             Rotation,
-            GroundingUp,
+            FirstPersonCharacter.GroundingUp,
             originalVelocityDirection,
             hitDistance,
             FirstPersonCharacter.StepHandling,
@@ -118,18 +117,18 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             ref characterGroundHit,
             in hits,
             originalVelocityDirection,
-            GroundingUp,
+            FirstPersonCharacter.GroundingUp,
             FirstPersonCharacter.ConstrainVelocityToGroundPlane);
     }
     #endregion
 
     public unsafe void OnUpdate()
     {
-        GroundingUp = -math.normalizesafe(FirstPersonCharacter.Gravity);
+        FirstPersonCharacter.GroundingUp = -math.normalizesafe(FirstPersonCharacter.Gravity);
 
         KinematicCharacterUtilities.InitializationUpdate(ref CharacterBody, ref CharacterHitsBuffer, ref VelocityProjectionHitsBuffer, ref CharacterDeferredImpulsesBuffer);
-        KinematicCharacterUtilities.ParentMovementUpdate(ref this, ref Translation, ref CharacterBody, in PhysicsCollider, DeltaTime, Entity, Rotation, GroundingUp, CharacterBody.WasGroundedBeforeCharacterUpdate); // safe to remove if not needed
-        KinematicCharacterUtilities.GroundingUpdate(ref this, ref Translation, ref CharacterBody, ref CharacterHitsBuffer, ref VelocityProjectionHitsBuffer, in PhysicsCollider, Entity, Rotation, GroundingUp);
+        KinematicCharacterUtilities.ParentMovementUpdate(ref this, ref Translation, ref CharacterBody, in PhysicsCollider, DeltaTime, Entity, Rotation, FirstPersonCharacter.GroundingUp, CharacterBody.WasGroundedBeforeCharacterUpdate); // safe to remove if not needed
+        KinematicCharacterUtilities.GroundingUpdate(ref this, ref Translation, ref CharacterBody, ref CharacterHitsBuffer, ref VelocityProjectionHitsBuffer, in PhysicsCollider, Entity, Rotation, FirstPersonCharacter.GroundingUp);
 
         // Character velocity control is updated AFTER the ground has been detected, but BEFORE the character tries to move & collide with that velocity
         HandleCharacterControl();
@@ -141,9 +140,9 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             KinematicCharacterUtilities.DefaultMethods.UpdateGroundPushing(ref CollisionWorld, ref PhysicsMassFromEntity, ref CharacterDeferredImpulsesBuffer, ref CharacterBody, DeltaTime, FirstPersonCharacter.Gravity, 1f); // safe to remove if not needed
         }
 
-        KinematicCharacterUtilities.MovementAndDecollisionsUpdate(ref this, ref Translation, ref CharacterBody, ref CharacterHitsBuffer, ref VelocityProjectionHitsBuffer, ref CharacterDeferredImpulsesBuffer, in PhysicsCollider, DeltaTime, Entity, Rotation, GroundingUp);
-        KinematicCharacterUtilities.DefaultMethods.MovingPlatformDetection(ref TrackedTransformFromEntity, ref CharacterBodyFromEntity, ref CharacterBody); // safe to remove if not needed
-        KinematicCharacterUtilities.ParentMomentumUpdate(ref TrackedTransformFromEntity, ref CharacterBody, in Translation, DeltaTime, GroundingUp); // safe to remove if not needed
+        KinematicCharacterUtilities.MovementAndDecollisionsUpdate(ref this, ref Translation, ref CharacterBody, ref CharacterHitsBuffer, ref VelocityProjectionHitsBuffer, ref CharacterDeferredImpulsesBuffer, in PhysicsCollider, DeltaTime, Entity, Rotation, FirstPersonCharacter.GroundingUp);
+        KinematicCharacterUtilities.DefaultMethods.MovingPlatformDetection(ref TrackedTransformFromEntity, ref StoredKinematicCharacterBodyPropertiesFromEntity, ref CharacterBody); // safe to remove if not needed
+        KinematicCharacterUtilities.ParentMomentumUpdate(ref TrackedTransformFromEntity, ref CharacterBody, in Translation, DeltaTime, FirstPersonCharacter.GroundingUp); // safe to remove if not needed
         KinematicCharacterUtilities.ProcessStatefulCharacterHits(ref StatefulCharacterHitsBuffer, in CharacterHitsBuffer); // safe to remove if not needed
     }
 
@@ -158,7 +157,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
                 in PhysicsCollider,
                 Entity,
                 CharacterBody.RelativeVelocity,
-                GroundingUp,
+                FirstPersonCharacter.GroundingUp,
                 0.05f, // verticalOffset
                 0.05f, // downDetectionDepth
                 DeltaTime, // deltaTimeIntoFuture
@@ -183,19 +182,19 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
         {
             // Move on ground
             float3 targetVelocity = FirstPersonCharacterInputs.MoveVector * FirstPersonCharacter.GroundMaxSpeed;
-            CharacterControlUtilities.StandardGroundMove_Interpolated(ref CharacterBody.RelativeVelocity, targetVelocity, FirstPersonCharacter.GroundedMovementSharpness, DeltaTime, GroundingUp, CharacterBody.GroundHit.Normal);
+            CharacterControlUtilities.StandardGroundMove_Interpolated(ref CharacterBody.RelativeVelocity, targetVelocity, FirstPersonCharacter.GroundedMovementSharpness, DeltaTime, FirstPersonCharacter.GroundingUp, CharacterBody.GroundHit.Normal);
 
             // Jump
             if (FirstPersonCharacterInputs.JumpRequested)
             {
-                CharacterControlUtilities.StandardJump(ref CharacterBody, GroundingUp * FirstPersonCharacter.JumpSpeed, true, GroundingUp);
+                CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
             }
         }
         else
         {
             // Move in air
             float3 airAcceleration = FirstPersonCharacterInputs.MoveVector * FirstPersonCharacter.AirAcceleration;
-            CharacterControlUtilities.StandardAirMove(ref CharacterBody.RelativeVelocity, airAcceleration, FirstPersonCharacter.AirMaxSpeed, GroundingUp, DeltaTime, false);
+            CharacterControlUtilities.StandardAirMove(ref CharacterBody.RelativeVelocity, airAcceleration, FirstPersonCharacter.AirMaxSpeed, FirstPersonCharacter.GroundingUp, DeltaTime, false);
 
             // Gravity
             CharacterControlUtilities.AccelerateVelocity(ref CharacterBody.RelativeVelocity, FirstPersonCharacter.Gravity, DeltaTime);
@@ -203,8 +202,5 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             // Drag
             CharacterControlUtilities.ApplyDragToVelocity(ref CharacterBody.RelativeVelocity, DeltaTime, FirstPersonCharacter.AirDrag);
         }
-
-        // Reset jump request
-        FirstPersonCharacterInputs.JumpRequested = false;
     }
 }
