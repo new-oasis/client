@@ -30,13 +30,13 @@ public partial class FirstPersonPlayerSystem : SystemBase
         uint fixedTick = FixedUpdateTickSystem.FixedTick;
 
         // Gather input
-        moveInput = float2.zero;
-        moveInput.y += Input.GetKey(KeyCode.W) ? 1f : 0f;
-        moveInput.y += Input.GetKey(KeyCode.S) ? -1f : 0f;
-        moveInput.x += Input.GetKey(KeyCode.D) ? 1f : 0f;
-        moveInput.x += Input.GetKey(KeyCode.A) ? -1f : 0f;
-        jumpInput = Input.GetKeyDown(KeyCode.Space);
-        lookInput = new float2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        // moveInput = float2.zero;
+        // moveInput.y += Input.GetKey(KeyCode.W) ? 1f : 0f;
+        // moveInput.y += Input.GetKey(KeyCode.S) ? -1f : 0f;
+        // moveInput.x += Input.GetKey(KeyCode.D) ? 1f : 0f;
+        // moveInput.x += Input.GetKey(KeyCode.A) ? -1f : 0f;
+        // jumpInput = Input.GetKeyDown(KeyCode.Space);
+        // lookInput = new float2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
         // Iterate on all Player components to apply input to their character
         Entities
