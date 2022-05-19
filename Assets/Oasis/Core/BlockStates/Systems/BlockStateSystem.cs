@@ -75,10 +75,17 @@ namespace Oasis.Core
 
             if (gModel.BlockType == Grpc.BlockType.Cube || gModel.BlockType == Grpc.BlockType.Liquid)
             {
+                // Debug.Log($"BlockStateSystem#LoadAsync Cube|Liquid {gBlockState}");
+                SetTextures(ref blockState, gModel);
+            }
+            else if (gModel.BlockType == Grpc.BlockType.Model && gModel.Type == "block")
+            {
+                // Debug.Log($"BlockStateSystem#LoadAsync model block {gBlockState}");
                 SetTextures(ref blockState, gModel);
             }
             else if (gModel.BlockType == Grpc.BlockType.Model)
             {
+                // Debug.Log($"BlockStateSystem#LoadAsync Model {gBlockState}");
                 EntityManager.AddSharedComponentData(e, new ModelRecord { Value = gModel });
                 foreach (Grpc.Model.Types.Element element in gModel.Elements)
                 {

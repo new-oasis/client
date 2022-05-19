@@ -44,17 +44,17 @@ namespace Oasis.Core
                                 var blockState = GetComponent<BlockState>(blockStateEntity);
                                 if (blockState.blockType != (BlockType.model)) continue;
                                     
-                                var modelInstance = ecb.Instantiate(entityInQueryIndex, prefab);
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, new Parent{Value = e});
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, new LocalToParent {Value = new float4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)});
-                                
-                                
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, new ModelInstance() {blockState = blockStateEntity, lit = true});
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, 
-                                    new Translation() {Value = new float3(x,y,z) + new float3(0.5f)});
-                                
-                                var q = quaternion.EulerXYZ(blockState.x * Mathf.Deg2Rad, blockState.y * Mathf.Deg2Rad, 0);
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, new Rotation() { Value = q });
+                                // var modelInstance = ecb.Instantiate(entityInQueryIndex, prefab);
+                                // ecb.AddComponent(entityInQueryIndex, modelInstance, new Parent{Value = e});
+                                // ecb.AddComponent(entityInQueryIndex, modelInstance, new LocalToParent {Value = new float4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)});
+                                //
+                                //
+                                // ecb.AddComponent(entityInQueryIndex, modelInstance, new ModelInstance() {blockState = blockStateEntity, lit = true});
+                                // ecb.AddComponent(entityInQueryIndex, modelInstance, 
+                                // new Translation() {Value = new float3(x,y,z) + new float3(0.5f)});
+                                //
+                                // var q = quaternion.EulerXYZ(blockState.x * Mathf.Deg2Rad, blockState.y * Mathf.Deg2Rad, 0);
+                                // ecb.AddComponent(entityInQueryIndex, modelInstance, new Rotation() { Value = q });
                             } 
                     
                 }) .Schedule();
