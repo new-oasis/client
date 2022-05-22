@@ -37,6 +37,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.editoriterationprofiler": {
+      "version": "0.1.2-preview",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.entities": {
       "version": "0.50.1-preview.2",
       "depth": 0,

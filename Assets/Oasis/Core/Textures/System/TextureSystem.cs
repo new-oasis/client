@@ -212,7 +212,7 @@ namespace Oasis.Core
                 actual = tex.Replace("minecraft:", "").Replace("block/", "");
 
 
-            var gDomainName = new Grpc.DomainName {Domain = record.Domain, Name = actual};
+            var gDomainName = new Grpc.DomainName {Version = record.DomainName.Version, Domain = record.DomainName.Domain, Name = actual};
             var textureEntity = _entities[gDomainName];
 
 

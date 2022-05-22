@@ -40,20 +40,19 @@ message Places {
 message Model {
   uint32 id   = 1;
   string type = 2;
-  string name = 3;
-  string domain = 4;
-  map<string,string> textures = 5;
-  repeated Element elements = 6;
-  string north = 7;
-  string south = 8;
-  string east = 9;
-  string west = 10;
-  string up = 11;
-  string down = 12;
-  BlockType blockType = 13;
-  TextureType textureType = 14;
-  int32 x = 15;
-  int32 y = 16;
+  DomainName domainName = 3;
+  map<string,string> textures = 4;
+  repeated Element elements = 5;
+  string north = 6;
+  string south = 7;
+  string east = 8;
+  string west = 9;
+  string up = 10;
+  string down = 11;
+  BlockType blockType = 12;
+  TextureType textureType = 13;
+  int32 x = 14;
+  int32 y = 15;
 
   message Element{
     repeated float from = 1;
@@ -142,6 +141,7 @@ message Name { string value = 1; }
 message DomainName {
   string domain = 1;
   string name = 2;
+  string version = 3;
 }
 message Empty {}
 enum TextureType {

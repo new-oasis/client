@@ -15,6 +15,7 @@ namespace Oasis.Examples
     {
         
         [Header("BlockState")]
+        public string version;
         public string domain;
         public new string name;
         public TextureType textureType;
@@ -40,7 +41,7 @@ namespace Oasis.Examples
             var blockStateEntity = em.CreateEntity();
             em.AddComponentData(blockStateEntity, new BlockState()
             {
-                domainName = new Core.DomainName(domain, name),
+                domainName = new Core.DomainName(version, domain, name),
                 textureType = textureType,
                 blockType = blockType
             });
@@ -57,7 +58,7 @@ namespace Oasis.Examples
             element.Faces["west"] = new Model.Types.Face{Texture = "#all", Uv = { 0, 0, 16, 16 }};
             element.Faces["up"] = new Model.Types.Face{Texture = "#all", Uv = { 0, 0, 16, 16 }};
             element.Faces["down"] = new Model.Types.Face{Texture = "#all", Uv = { 0, 0, 16, 16 }};
-            var gModel = new Model(){Domain = domain};
+            var gModel = new Model(){DomainName  = new DomainName(){Domain = domain, Name = name, Version = version}};
             gModel.Textures["all"] = texture;
             gModel.Elements.Add(element);
             em.AddSharedComponentData(blockStateEntity, new ModelRecord { Value = gModel });

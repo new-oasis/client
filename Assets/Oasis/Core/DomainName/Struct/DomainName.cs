@@ -8,16 +8,19 @@ namespace Oasis.Core
     [Serializable]
     public struct DomainName : IEquatable<DomainName>
     {
+        public FixedString64Bytes version;
         public FixedString64Bytes domain;
         public FixedString64Bytes name;
 
         public DomainName(Oasis.Grpc.DomainName domainName)
         {
+            version = domainName.Version;
             domain = domainName.Domain;
             name = domainName.Name;
         }
-        public DomainName(string domain, string name)
+        public DomainName(string version, string domain, string name)
         {
+            this.version = version;
             this.domain = domain;
             this.name = name;
         }
@@ -37,7 +40,7 @@ namespace Oasis.Core
 
         public override string ToString()
         {
-            return domain + " : " + name;
+            return version + " : " + domain + " : " + name;
         }
 
         public Grpc.DomainName ToGrpc()

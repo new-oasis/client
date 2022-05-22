@@ -29,57 +29,58 @@ namespace Oasis.Grpc {
             "ASgLMg4ucGIuRG9tYWluTmFtZRIMCgRuYW1lGAIgASgJIl4KBVBsYWNlEh0K",
             "BXJlYWxtGAEgASgLMg4ucGIuRG9tYWluTmFtZRIMCgRuYW1lGAIgASgJEhUK",
             "A3h5ehgDIAEoCzIILnBiLkludDMSEQoJdGh1bWJuYWlsGAQgASgMIiIKBlBs",
-            "YWNlcxIYCgV2YWx1ZRgBIAMoCzIJLnBiLlBsYWNlIpcFCgVNb2RlbBIKCgJp",
-            "ZBgBIAEoDRIMCgR0eXBlGAIgASgJEgwKBG5hbWUYAyABKAkSDgoGZG9tYWlu",
-            "GAQgASgJEikKCHRleHR1cmVzGAUgAygLMhcucGIuTW9kZWwuVGV4dHVyZXNF",
-            "bnRyeRIjCghlbGVtZW50cxgGIAMoCzIRLnBiLk1vZGVsLkVsZW1lbnQSDQoF",
-            "bm9ydGgYByABKAkSDQoFc291dGgYCCABKAkSDAoEZWFzdBgJIAEoCRIMCgR3",
-            "ZXN0GAogASgJEgoKAnVwGAsgASgJEgwKBGRvd24YDCABKAkSIAoJYmxvY2tU",
-            "eXBlGA0gASgOMg0ucGIuQmxvY2tUeXBlEiQKC3RleHR1cmVUeXBlGA4gASgO",
-            "Mg8ucGIuVGV4dHVyZVR5cGUSCQoBeBgPIAEoBRIJCgF5GBAgASgFGi8KDVRl",
-            "eHR1cmVzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ARrE",
-            "AQoHRWxlbWVudBIMCgRmcm9tGAEgAygCEgoKAnRvGAIgAygCEisKBWZhY2Vz",
-            "GAMgAygLMhwucGIuTW9kZWwuRWxlbWVudC5GYWNlc0VudHJ5EiQKCHJvdGF0",
-            "aW9uGAQgASgLMhIucGIuTW9kZWwuUm90YXRpb24SDgoGdXZsb2NrGAUgASgI",
-            "GjwKCkZhY2VzRW50cnkSCwoDa2V5GAEgASgJEh0KBXZhbHVlGAIgASgLMg4u",
-            "cGIuTW9kZWwuRmFjZToCOAEaIwoERmFjZRIKCgJ1dhgBIAMoBRIPCgd0ZXh0",
-            "dXJlGAIgASgJGjcKCFJvdGF0aW9uEg4KBm9yaWdpbhgBIAMoBRINCgVhbmds",
-            "ZRgCIAEoAhIMCgRheGlzGAMgASgJIoMBCgpCbG9ja1N0YXRlEh0KBWJsb2Nr",
-            "GAEgASgLMg4ucGIuRG9tYWluTmFtZRIoCgVzdGF0ZRgCIAMoCzIZLnBiLkJs",
-            "b2NrU3RhdGUuU3RhdGVFbnRyeRosCgpTdGF0ZUVudHJ5EgsKA2tleRgBIAEo",
-            "CRINCgV2YWx1ZRgCIAEoCToCOAEiRAoMQ2h1bmtSZXF1ZXN0Eh0KBXJlYWxt",
-            "GAEgASgLMg4ucGIuRG9tYWluTmFtZRIVCgN4eXoYAiABKAsyCC5wYi5JbnQz",
-            "Ik8KBUNodW5rEhUKA3h5ehgBIAEoCzIILnBiLkludDMSHwoHcGFsZXR0ZRgC",
-            "IAMoCzIOLnBiLkJsb2NrU3RhdGUSDgoGdm94ZWxzGAMgASgMInMKBUJsb2Nr",
-            "EiIKCmRvbWFpbk5hbWUYASABKAsyDi5wYi5Eb21haW5OYW1lEiAKCWJsb2Nr",
-            "VHlwZRgCIAEoDjINLnBiLkJsb2NrVHlwZRIkCgt0ZXh0dXJlVHlwZRgDIAEo",
-            "DjIPLnBiLlRleHR1cmVUeXBlIiIKBkJsb2NrcxIYCgV2YWx1ZRgBIAMoCzIJ",
-            "LnBiLkJsb2NrIlYKB1RleHR1cmUSHQoEdHlwZRgBIAEoDjIPLnBiLlRleHR1",
-            "cmVUeXBlEgwKBG5hbWUYAiABKAkSDgoGZG9tYWluGAMgASgJEg4KBmJhc2U2",
-            "NBgEIAEoCSKEAQoLRmVlZFJlcXVlc3QSIwoJam9pblJlYWxtGAEgASgLMg4u",
-            "cGIuRG9tYWluTmFtZUgAEh8KC2NoYW5nZUNodW5rGAIgASgLMggucGIuSW50",
-            "M0gAEiYKC3ZveGVsQ2hhbmdlGAMgASgLMg8ucGIuVm94ZWxDaGFuZ2VIAEIH",
-            "CgVldmVudCJ6CgxGZWVkUmVzcG9uc2USJgoLdm94ZWxDaGFuZ2UYASABKAsy",
-            "Dy5wYi5Wb3hlbENoYW5nZUgAEi0KCHNodXRkb3duGAIgASgLMhkucGIuRmVl",
-            "ZFJlc3BvbnNlLlNodXRkb3duSAAaCgoIU2h1dGRvd25CBwoFZXZlbnQiYAoL",
-            "Vm94ZWxDaGFuZ2USFwoFdm94ZWwYASABKAsyCC5wYi5JbnQzEiIKCmJsb2Nr",
-            "U3RhdGUYAiABKAsyDi5wYi5CbG9ja1N0YXRlEhQKDHBhbGV0dGVJbmRleBgD",
-            "IAEoBSITCgJJZBINCgV2YWx1ZRgBIAEoDSInCgRJbnQzEgkKAXgYASABKAUS",
-            "CQoBeRgCIAEoBRIJCgF6GAMgASgFIhUKBE5hbWUSDQoFdmFsdWUYASABKAki",
-            "KgoKRG9tYWluTmFtZRIOCgZkb21haW4YASABKAkSDAoEbmFtZRgCIAEoCSIH",
-            "CgVFbXB0eSpMCgtUZXh0dXJlVHlwZRIKCgZPUEFRVUUQABIPCgtUUkFOU1BB",
-            "UkVOVBABEg0KCUFMUEhBQ0xJUBACEhEKDU5PVEVYVFVSRVRZUEUQAypGCglC",
-            "bG9ja1R5cGUSCAoEQ1VCRRAAEgkKBU1PREVMEAESCgoGTElRVUlEEAISBwoD",
-            "QUlSEAMSDwoLTk9CTE9DS1RZUEUQBDLwAgoFT2FzaXMSKwoKR2V0VGV4dHVy",
-            "ZRIOLnBiLkRvbWFpbk5hbWUaCy5wYi5UZXh0dXJlIgASJwoIR2V0QmxvY2sS",
-            "Di5wYi5Eb21haW5OYW1lGgkucGIuQmxvY2siABIsCg1HZXRCbG9ja1N0YXRl",
-            "Eg4ucGIuQmxvY2tTdGF0ZRoJLnBiLk1vZGVsIgASKQoIR2V0Q2h1bmsSEC5w",
-            "Yi5DaHVua1JlcXVlc3QaCS5wYi5DaHVuayIAEikKCEdldFBsYWNlEhAucGIu",
-            "UGxhY2VSZXF1ZXN0GgkucGIuUGxhY2UiABIsCgxTZWFyY2hCbG9ja3MSDi5w",
-            "Yi5Eb21haW5OYW1lGgoucGIuQmxvY2tzIgASLgoMU2VhcmNoUGxhY2VzEhAu",
-            "cGIuUGxhY2VSZXF1ZXN0GgoucGIuUGxhY2VzIgASLwoERmVlZBIPLnBiLkZl",
-            "ZWRSZXF1ZXN0GhAucGIuRmVlZFJlc3BvbnNlIgAoATABQhxaDXNlcnZlci9w",
-            "a2cvcGKqAgpPYXNpcy5HcnBjYgZwcm90bzM="));
+            "YWNlcxIYCgV2YWx1ZRgBIAMoCzIJLnBiLlBsYWNlIp0FCgVNb2RlbBIKCgJp",
+            "ZBgBIAEoDRIMCgR0eXBlGAIgASgJEiIKCmRvbWFpbk5hbWUYAyABKAsyDi5w",
+            "Yi5Eb21haW5OYW1lEikKCHRleHR1cmVzGAQgAygLMhcucGIuTW9kZWwuVGV4",
+            "dHVyZXNFbnRyeRIjCghlbGVtZW50cxgFIAMoCzIRLnBiLk1vZGVsLkVsZW1l",
+            "bnQSDQoFbm9ydGgYBiABKAkSDQoFc291dGgYByABKAkSDAoEZWFzdBgIIAEo",
+            "CRIMCgR3ZXN0GAkgASgJEgoKAnVwGAogASgJEgwKBGRvd24YCyABKAkSIAoJ",
+            "YmxvY2tUeXBlGAwgASgOMg0ucGIuQmxvY2tUeXBlEiQKC3RleHR1cmVUeXBl",
+            "GA0gASgOMg8ucGIuVGV4dHVyZVR5cGUSCQoBeBgOIAEoBRIJCgF5GA8gASgF",
+            "Gi8KDVRleHR1cmVzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJ",
+            "OgI4ARrEAQoHRWxlbWVudBIMCgRmcm9tGAEgAygCEgoKAnRvGAIgAygCEisK",
+            "BWZhY2VzGAMgAygLMhwucGIuTW9kZWwuRWxlbWVudC5GYWNlc0VudHJ5EiQK",
+            "CHJvdGF0aW9uGAQgASgLMhIucGIuTW9kZWwuUm90YXRpb24SDgoGdXZsb2Nr",
+            "GAUgASgIGjwKCkZhY2VzRW50cnkSCwoDa2V5GAEgASgJEh0KBXZhbHVlGAIg",
+            "ASgLMg4ucGIuTW9kZWwuRmFjZToCOAEaIwoERmFjZRIKCgJ1dhgBIAMoBRIP",
+            "Cgd0ZXh0dXJlGAIgASgJGjcKCFJvdGF0aW9uEg4KBm9yaWdpbhgBIAMoBRIN",
+            "CgVhbmdsZRgCIAEoAhIMCgRheGlzGAMgASgJIoMBCgpCbG9ja1N0YXRlEh0K",
+            "BWJsb2NrGAEgASgLMg4ucGIuRG9tYWluTmFtZRIoCgVzdGF0ZRgCIAMoCzIZ",
+            "LnBiLkJsb2NrU3RhdGUuU3RhdGVFbnRyeRosCgpTdGF0ZUVudHJ5EgsKA2tl",
+            "eRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiRAoMQ2h1bmtSZXF1ZXN0Eh0K",
+            "BXJlYWxtGAEgASgLMg4ucGIuRG9tYWluTmFtZRIVCgN4eXoYAiABKAsyCC5w",
+            "Yi5JbnQzIk8KBUNodW5rEhUKA3h5ehgBIAEoCzIILnBiLkludDMSHwoHcGFs",
+            "ZXR0ZRgCIAMoCzIOLnBiLkJsb2NrU3RhdGUSDgoGdm94ZWxzGAMgASgMInMK",
+            "BUJsb2NrEiIKCmRvbWFpbk5hbWUYASABKAsyDi5wYi5Eb21haW5OYW1lEiAK",
+            "CWJsb2NrVHlwZRgCIAEoDjINLnBiLkJsb2NrVHlwZRIkCgt0ZXh0dXJlVHlw",
+            "ZRgDIAEoDjIPLnBiLlRleHR1cmVUeXBlIiIKBkJsb2NrcxIYCgV2YWx1ZRgB",
+            "IAMoCzIJLnBiLkJsb2NrIlYKB1RleHR1cmUSHQoEdHlwZRgBIAEoDjIPLnBi",
+            "LlRleHR1cmVUeXBlEgwKBG5hbWUYAiABKAkSDgoGZG9tYWluGAMgASgJEg4K",
+            "BmJhc2U2NBgEIAEoCSKEAQoLRmVlZFJlcXVlc3QSIwoJam9pblJlYWxtGAEg",
+            "ASgLMg4ucGIuRG9tYWluTmFtZUgAEh8KC2NoYW5nZUNodW5rGAIgASgLMggu",
+            "cGIuSW50M0gAEiYKC3ZveGVsQ2hhbmdlGAMgASgLMg8ucGIuVm94ZWxDaGFu",
+            "Z2VIAEIHCgVldmVudCJ6CgxGZWVkUmVzcG9uc2USJgoLdm94ZWxDaGFuZ2UY",
+            "ASABKAsyDy5wYi5Wb3hlbENoYW5nZUgAEi0KCHNodXRkb3duGAIgASgLMhku",
+            "cGIuRmVlZFJlc3BvbnNlLlNodXRkb3duSAAaCgoIU2h1dGRvd25CBwoFZXZl",
+            "bnQiYAoLVm94ZWxDaGFuZ2USFwoFdm94ZWwYASABKAsyCC5wYi5JbnQzEiIK",
+            "CmJsb2NrU3RhdGUYAiABKAsyDi5wYi5CbG9ja1N0YXRlEhQKDHBhbGV0dGVJ",
+            "bmRleBgDIAEoBSITCgJJZBINCgV2YWx1ZRgBIAEoDSInCgRJbnQzEgkKAXgY",
+            "ASABKAUSCQoBeRgCIAEoBRIJCgF6GAMgASgFIhUKBE5hbWUSDQoFdmFsdWUY",
+            "ASABKAkiOwoKRG9tYWluTmFtZRIOCgZkb21haW4YASABKAkSDAoEbmFtZRgC",
+            "IAEoCRIPCgd2ZXJzaW9uGAMgASgJIgcKBUVtcHR5KkwKC1RleHR1cmVUeXBl",
+            "EgoKBk9QQVFVRRAAEg8KC1RSQU5TUEFSRU5UEAESDQoJQUxQSEFDTElQEAIS",
+            "EQoNTk9URVhUVVJFVFlQRRADKkYKCUJsb2NrVHlwZRIICgRDVUJFEAASCQoF",
+            "TU9ERUwQARIKCgZMSVFVSUQQAhIHCgNBSVIQAxIPCgtOT0JMT0NLVFlQRRAE",
+            "MvACCgVPYXNpcxIrCgpHZXRUZXh0dXJlEg4ucGIuRG9tYWluTmFtZRoLLnBi",
+            "LlRleHR1cmUiABInCghHZXRCbG9jaxIOLnBiLkRvbWFpbk5hbWUaCS5wYi5C",
+            "bG9jayIAEiwKDUdldEJsb2NrU3RhdGUSDi5wYi5CbG9ja1N0YXRlGgkucGIu",
+            "TW9kZWwiABIpCghHZXRDaHVuaxIQLnBiLkNodW5rUmVxdWVzdBoJLnBiLkNo",
+            "dW5rIgASKQoIR2V0UGxhY2USEC5wYi5QbGFjZVJlcXVlc3QaCS5wYi5QbGFj",
+            "ZSIAEiwKDFNlYXJjaEJsb2NrcxIOLnBiLkRvbWFpbk5hbWUaCi5wYi5CbG9j",
+            "a3MiABIuCgxTZWFyY2hQbGFjZXMSEC5wYi5QbGFjZVJlcXVlc3QaCi5wYi5Q",
+            "bGFjZXMiABIvCgRGZWVkEg8ucGIuRmVlZFJlcXVlc3QaEC5wYi5GZWVkUmVz",
+            "cG9uc2UiACgBMAFCHFoNc2VydmVyL3BrZy9wYqoCCk9hc2lzLkdycGNiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Oasis.Grpc.TextureType), typeof(global::Oasis.Grpc.BlockType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -87,7 +88,7 @@ namespace Oasis.Grpc {
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.PlaceRequest), global::Oasis.Grpc.PlaceRequest.Parser, new[]{ "Realm", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Place), global::Oasis.Grpc.Place.Parser, new[]{ "Realm", "Name", "Xyz", "Thumbnail" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Places), global::Oasis.Grpc.Places.Parser, new[]{ "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model), global::Oasis.Grpc.Model.Parser, new[]{ "Id", "Type", "Name", "Domain", "Textures", "Elements", "North", "South", "East", "West", "Up", "Down", "BlockType", "TextureType", "X", "Y" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model.Types.Element), global::Oasis.Grpc.Model.Types.Element.Parser, new[]{ "From", "To", "Faces", "Rotation", "Uvlock" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model), global::Oasis.Grpc.Model.Parser, new[]{ "Id", "Type", "DomainName", "Textures", "Elements", "North", "South", "East", "West", "Up", "Down", "BlockType", "TextureType", "X", "Y" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model.Types.Element), global::Oasis.Grpc.Model.Types.Element.Parser, new[]{ "From", "To", "Faces", "Rotation", "Uvlock" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model.Types.Face), global::Oasis.Grpc.Model.Types.Face.Parser, new[]{ "Uv", "Texture" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Model.Types.Rotation), global::Oasis.Grpc.Model.Types.Rotation.Parser, new[]{ "Origin", "Angle", "Axis" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.BlockState), global::Oasis.Grpc.BlockState.Parser, new[]{ "Block", "State" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
@@ -102,7 +103,7 @@ namespace Oasis.Grpc {
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Id), global::Oasis.Grpc.Id.Parser, new[]{ "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Int3), global::Oasis.Grpc.Int3.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Name), global::Oasis.Grpc.Name.Parser, new[]{ "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.DomainName), global::Oasis.Grpc.DomainName.Parser, new[]{ "Domain", "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.DomainName), global::Oasis.Grpc.DomainName.Parser, new[]{ "Domain", "Name", "Version" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Oasis.Grpc.Empty), global::Oasis.Grpc.Empty.Parser, null, null, null, null, null)
           }));
     }
@@ -1108,8 +1109,7 @@ namespace Oasis.Grpc {
     public Model(Model other) : this() {
       id_ = other.id_;
       type_ = other.type_;
-      name_ = other.name_;
-      domain_ = other.domain_;
+      domainName_ = other.domainName_ != null ? other.domainName_.Clone() : null;
       textures_ = other.textures_.Clone();
       elements_ = other.elements_.Clone();
       north_ = other.north_;
@@ -1155,34 +1155,22 @@ namespace Oasis.Grpc {
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
-    private string name_ = "";
+    /// <summary>Field number for the "domainName" field.</summary>
+    public const int DomainNameFieldNumber = 3;
+    private global::Oasis.Grpc.DomainName domainName_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public global::Oasis.Grpc.DomainName DomainName {
+      get { return domainName_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "domain" field.</summary>
-    public const int DomainFieldNumber = 4;
-    private string domain_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Domain {
-      get { return domain_; }
-      set {
-        domain_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        domainName_ = value;
       }
     }
 
     /// <summary>Field number for the "textures" field.</summary>
-    public const int TexturesFieldNumber = 5;
+    public const int TexturesFieldNumber = 4;
     private static readonly pbc::MapField<string, string>.Codec _map_textures_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 42);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 34);
     private readonly pbc::MapField<string, string> textures_ = new pbc::MapField<string, string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1191,9 +1179,9 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "elements" field.</summary>
-    public const int ElementsFieldNumber = 6;
+    public const int ElementsFieldNumber = 5;
     private static readonly pb::FieldCodec<global::Oasis.Grpc.Model.Types.Element> _repeated_elements_codec
-        = pb::FieldCodec.ForMessage(50, global::Oasis.Grpc.Model.Types.Element.Parser);
+        = pb::FieldCodec.ForMessage(42, global::Oasis.Grpc.Model.Types.Element.Parser);
     private readonly pbc::RepeatedField<global::Oasis.Grpc.Model.Types.Element> elements_ = new pbc::RepeatedField<global::Oasis.Grpc.Model.Types.Element>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1202,7 +1190,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "north" field.</summary>
-    public const int NorthFieldNumber = 7;
+    public const int NorthFieldNumber = 6;
     private string north_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1214,7 +1202,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "south" field.</summary>
-    public const int SouthFieldNumber = 8;
+    public const int SouthFieldNumber = 7;
     private string south_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1226,7 +1214,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "east" field.</summary>
-    public const int EastFieldNumber = 9;
+    public const int EastFieldNumber = 8;
     private string east_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1238,7 +1226,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "west" field.</summary>
-    public const int WestFieldNumber = 10;
+    public const int WestFieldNumber = 9;
     private string west_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1250,7 +1238,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "up" field.</summary>
-    public const int UpFieldNumber = 11;
+    public const int UpFieldNumber = 10;
     private string up_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1262,7 +1250,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "down" field.</summary>
-    public const int DownFieldNumber = 12;
+    public const int DownFieldNumber = 11;
     private string down_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1274,7 +1262,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "blockType" field.</summary>
-    public const int BlockTypeFieldNumber = 13;
+    public const int BlockTypeFieldNumber = 12;
     private global::Oasis.Grpc.BlockType blockType_ = global::Oasis.Grpc.BlockType.Cube;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1286,7 +1274,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "textureType" field.</summary>
-    public const int TextureTypeFieldNumber = 14;
+    public const int TextureTypeFieldNumber = 13;
     private global::Oasis.Grpc.TextureType textureType_ = global::Oasis.Grpc.TextureType.Opaque;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1298,7 +1286,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 15;
+    public const int XFieldNumber = 14;
     private int x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1310,7 +1298,7 @@ namespace Oasis.Grpc {
     }
 
     /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 16;
+    public const int YFieldNumber = 15;
     private int y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1338,8 +1326,7 @@ namespace Oasis.Grpc {
       }
       if (Id != other.Id) return false;
       if (Type != other.Type) return false;
-      if (Name != other.Name) return false;
-      if (Domain != other.Domain) return false;
+      if (!object.Equals(DomainName, other.DomainName)) return false;
       if (!Textures.Equals(other.Textures)) return false;
       if(!elements_.Equals(other.elements_)) return false;
       if (North != other.North) return false;
@@ -1361,8 +1348,7 @@ namespace Oasis.Grpc {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Type.Length != 0) hash ^= Type.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Domain.Length != 0) hash ^= Domain.GetHashCode();
+      if (domainName_ != null) hash ^= DomainName.GetHashCode();
       hash ^= Textures.GetHashCode();
       hash ^= elements_.GetHashCode();
       if (North.Length != 0) hash ^= North.GetHashCode();
@@ -1401,54 +1387,50 @@ namespace Oasis.Grpc {
         output.WriteRawTag(18);
         output.WriteString(Type);
       }
-      if (Name.Length != 0) {
+      if (domainName_ != null) {
         output.WriteRawTag(26);
-        output.WriteString(Name);
-      }
-      if (Domain.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Domain);
+        output.WriteMessage(DomainName);
       }
       textures_.WriteTo(output, _map_textures_codec);
       elements_.WriteTo(output, _repeated_elements_codec);
       if (North.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteString(North);
       }
       if (South.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteString(South);
       }
       if (East.Length != 0) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(66);
         output.WriteString(East);
       }
       if (West.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(74);
         output.WriteString(West);
       }
       if (Up.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(82);
         output.WriteString(Up);
       }
       if (Down.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteString(Down);
       }
       if (BlockType != global::Oasis.Grpc.BlockType.Cube) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteEnum((int) BlockType);
       }
       if (TextureType != global::Oasis.Grpc.TextureType.Opaque) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteEnum((int) TextureType);
       }
       if (X != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteInt32(X);
       }
       if (Y != 0) {
-        output.WriteRawTag(128, 1);
+        output.WriteRawTag(120);
         output.WriteInt32(Y);
       }
       if (_unknownFields != null) {
@@ -1469,54 +1451,50 @@ namespace Oasis.Grpc {
         output.WriteRawTag(18);
         output.WriteString(Type);
       }
-      if (Name.Length != 0) {
+      if (domainName_ != null) {
         output.WriteRawTag(26);
-        output.WriteString(Name);
-      }
-      if (Domain.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Domain);
+        output.WriteMessage(DomainName);
       }
       textures_.WriteTo(ref output, _map_textures_codec);
       elements_.WriteTo(ref output, _repeated_elements_codec);
       if (North.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteString(North);
       }
       if (South.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteString(South);
       }
       if (East.Length != 0) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(66);
         output.WriteString(East);
       }
       if (West.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(74);
         output.WriteString(West);
       }
       if (Up.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(82);
         output.WriteString(Up);
       }
       if (Down.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteString(Down);
       }
       if (BlockType != global::Oasis.Grpc.BlockType.Cube) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteEnum((int) BlockType);
       }
       if (TextureType != global::Oasis.Grpc.TextureType.Opaque) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteEnum((int) TextureType);
       }
       if (X != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(112);
         output.WriteInt32(X);
       }
       if (Y != 0) {
-        output.WriteRawTag(128, 1);
+        output.WriteRawTag(120);
         output.WriteInt32(Y);
       }
       if (_unknownFields != null) {
@@ -1535,11 +1513,8 @@ namespace Oasis.Grpc {
       if (Type.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (Domain.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Domain);
+      if (domainName_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DomainName);
       }
       size += textures_.CalculateSize(_map_textures_codec);
       size += elements_.CalculateSize(_repeated_elements_codec);
@@ -1571,7 +1546,7 @@ namespace Oasis.Grpc {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(X);
       }
       if (Y != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Y);
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Y);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1591,11 +1566,11 @@ namespace Oasis.Grpc {
       if (other.Type.Length != 0) {
         Type = other.Type;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      if (other.Domain.Length != 0) {
-        Domain = other.Domain;
+      if (other.domainName_ != null) {
+        if (domainName_ == null) {
+          DomainName = new global::Oasis.Grpc.DomainName();
+        }
+        DomainName.MergeFrom(other.DomainName);
       }
       textures_.Add(other.textures_);
       elements_.Add(other.elements_);
@@ -1653,58 +1628,57 @@ namespace Oasis.Grpc {
             break;
           }
           case 26: {
-            Name = input.ReadString();
+            if (domainName_ == null) {
+              DomainName = new global::Oasis.Grpc.DomainName();
+            }
+            input.ReadMessage(DomainName);
             break;
           }
           case 34: {
-            Domain = input.ReadString();
-            break;
-          }
-          case 42: {
             textures_.AddEntriesFrom(input, _map_textures_codec);
             break;
           }
-          case 50: {
+          case 42: {
             elements_.AddEntriesFrom(input, _repeated_elements_codec);
             break;
           }
-          case 58: {
+          case 50: {
             North = input.ReadString();
             break;
           }
-          case 66: {
+          case 58: {
             South = input.ReadString();
             break;
           }
-          case 74: {
+          case 66: {
             East = input.ReadString();
             break;
           }
-          case 82: {
+          case 74: {
             West = input.ReadString();
             break;
           }
-          case 90: {
+          case 82: {
             Up = input.ReadString();
             break;
           }
-          case 98: {
+          case 90: {
             Down = input.ReadString();
             break;
           }
-          case 104: {
+          case 96: {
             BlockType = (global::Oasis.Grpc.BlockType) input.ReadEnum();
             break;
           }
-          case 112: {
+          case 104: {
             TextureType = (global::Oasis.Grpc.TextureType) input.ReadEnum();
             break;
           }
-          case 120: {
+          case 112: {
             X = input.ReadInt32();
             break;
           }
-          case 128: {
+          case 120: {
             Y = input.ReadInt32();
             break;
           }
@@ -1732,58 +1706,57 @@ namespace Oasis.Grpc {
             break;
           }
           case 26: {
-            Name = input.ReadString();
+            if (domainName_ == null) {
+              DomainName = new global::Oasis.Grpc.DomainName();
+            }
+            input.ReadMessage(DomainName);
             break;
           }
           case 34: {
-            Domain = input.ReadString();
-            break;
-          }
-          case 42: {
             textures_.AddEntriesFrom(ref input, _map_textures_codec);
             break;
           }
-          case 50: {
+          case 42: {
             elements_.AddEntriesFrom(ref input, _repeated_elements_codec);
             break;
           }
-          case 58: {
+          case 50: {
             North = input.ReadString();
             break;
           }
-          case 66: {
+          case 58: {
             South = input.ReadString();
             break;
           }
-          case 74: {
+          case 66: {
             East = input.ReadString();
             break;
           }
-          case 82: {
+          case 74: {
             West = input.ReadString();
             break;
           }
-          case 90: {
+          case 82: {
             Up = input.ReadString();
             break;
           }
-          case 98: {
+          case 90: {
             Down = input.ReadString();
             break;
           }
-          case 104: {
+          case 96: {
             BlockType = (global::Oasis.Grpc.BlockType) input.ReadEnum();
             break;
           }
-          case 112: {
+          case 104: {
             TextureType = (global::Oasis.Grpc.TextureType) input.ReadEnum();
             break;
           }
-          case 120: {
+          case 112: {
             X = input.ReadInt32();
             break;
           }
-          case 128: {
+          case 120: {
             Y = input.ReadInt32();
             break;
           }
@@ -5825,6 +5798,7 @@ namespace Oasis.Grpc {
     public DomainName(DomainName other) : this() {
       domain_ = other.domain_;
       name_ = other.name_;
+      version_ = other.version_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5858,6 +5832,18 @@ namespace Oasis.Grpc {
       }
     }
 
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 3;
+    private string version_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Version {
+      get { return version_; }
+      set {
+        version_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -5875,6 +5861,7 @@ namespace Oasis.Grpc {
       }
       if (Domain != other.Domain) return false;
       if (Name != other.Name) return false;
+      if (Version != other.Version) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5884,6 +5871,7 @@ namespace Oasis.Grpc {
       int hash = 1;
       if (Domain.Length != 0) hash ^= Domain.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Version.Length != 0) hash ^= Version.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5910,6 +5898,10 @@ namespace Oasis.Grpc {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (Version.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Version);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5928,6 +5920,10 @@ namespace Oasis.Grpc {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
+      if (Version.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Version);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5943,6 +5939,9 @@ namespace Oasis.Grpc {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Version.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5961,6 +5960,9 @@ namespace Oasis.Grpc {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.Version.Length != 0) {
+        Version = other.Version;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5985,6 +5987,10 @@ namespace Oasis.Grpc {
             Name = input.ReadString();
             break;
           }
+          case 26: {
+            Version = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -6006,6 +6012,10 @@ namespace Oasis.Grpc {
           }
           case 18: {
             Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Version = input.ReadString();
             break;
           }
         }

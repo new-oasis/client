@@ -15,6 +15,7 @@ namespace Oasis.Game
     
     public class GameController : MonoBehaviour
     {
+        public string realmVersion;
         public string realmDomain;
         public string realmName;
         public string placeName = "start";
@@ -38,7 +39,7 @@ namespace Oasis.Game
             
             // Set Player realm
             var playerRealmSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<PlayerRealmSystem>();
-            playerRealmSystem.SetRealm(new DomainName(realmDomain, realmName));
+            playerRealmSystem.SetRealm(new DomainName(realmVersion, realmDomain, realmName));
             
             // Move to start
             var playerSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<PlayerSystem>();

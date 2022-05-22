@@ -74,6 +74,8 @@ namespace Oasis.Core
                 
                 foreach (var gBlockState in gChunk.Palette)
                 {
+                    if (gBlockState.Block.Name.ToString() != "air")
+                        gBlockState.Block.Version = realm.version.ToString();
                     var blockStateEntity = _blockStateSystem.Load(gBlockState);
                     blockStatesEntities.Add(blockStateEntity);
                     await EntityHelpers.WaitForDependencies(blockStateEntity);

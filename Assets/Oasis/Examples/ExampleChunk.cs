@@ -7,6 +7,7 @@ using Unity.Transforms;
 
 public class ExampleChunk : MonoBehaviour
 {
+    public string realmVersion;
     public string realmDomain;
     public string realmName;
     public int3 id;
@@ -28,7 +29,7 @@ public class ExampleChunk : MonoBehaviour
         em.AddComponentData(e, new LoadTag { });
         em.AddComponentData(e, new Chunk() {id = id});
         
-        var domainName = new DomainName{domain = realmDomain, name = realmName};
+        var domainName = new DomainName{version = realmVersion, domain = realmDomain, name = realmName};
         em.AddSharedComponentData(e, new Realm() {Value = domainName});
 
         var chunkSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<ChunkSystem>();

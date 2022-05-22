@@ -53,7 +53,7 @@ public partial class BlockStateDependencies : SystemBase
 
                 foreach (var texture in modelRecord.Value.Textures)
                 {
-                    var gDomainName = new Oasis.Grpc.DomainName { Domain = "minecraft", Name = texture.Value };
+                    var gDomainName = new Oasis.Grpc.DomainName { Version = blockState.domainName.version.ToString(), Domain = "minecraft", Name = texture.Value };
                     // TODO modelRecord should ref texture entities, not texture names requiring lookup
                     
                     if (!textureSystem._entities.ContainsKey(gDomainName))

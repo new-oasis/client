@@ -45,9 +45,12 @@ namespace Oasis.Core
 
         public Entity Load(Oasis.Grpc.BlockState gBlockState)
         {
+            if (gBlockState.Block.Name != "air" &&  gBlockState.Block.Version == "")
+                Debug.LogError("missing version");
+            
             if (entities.ContainsKey(gBlockState))
                 return entities[gBlockState];
-
+            
             Entity e = EntityManager.CreateEntity(typeof(LoadingTag));
             entities[gBlockState] = e;
             EntityManager.SetName(e, $"BlockState {gBlockState.Block.Domain}/{gBlockState.Block.Name}");
@@ -92,7 +95,7 @@ namespace Oasis.Core
                     foreach (KeyValuePair<string, Grpc.Model.Types.Face> kvp in element.Faces)
                     {
                         var actual = ResolveTexture(kvp.Value.Texture, gModel.Textures);
-                        _textureSystem.Load(new Grpc.DomainName { Domain = "minecraft", Name = actual });
+                        _textureSystem.Load(new Grpc.DomainName { Version = gBlockState.Block.Version, Domain = "minecraft", Name = actual });
                     }
                 }
             }
@@ -178,22 +181,22 @@ namespace Oasis.Core
         {
             if (gModel.Up != null)
                 blockState.up = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.Up, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.Up, gModel.Textures) });
             if (gModel.Down != null)
                 blockState.down = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.Down, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.Down, gModel.Textures) });
             if (gModel.North != null)
                 blockState.north = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.North, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.North, gModel.Textures) });
             if (gModel.South != null)
                 blockState.south = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.South, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.South, gModel.Textures) });
             if (gModel.West != null)
                 blockState.west = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.West, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.West, gModel.Textures) });
             if (gModel.East != null)
                 blockState.east = _textureSystem.Load(new Grpc.DomainName()
-                    { Domain = gModel.Domain, Name = ResolveTexture(gModel.East, gModel.Textures) });
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = ResolveTexture(gModel.East, gModel.Textures) });
         }
 
         private BlockType SetBlockType(Grpc.BlockType gBlockType)

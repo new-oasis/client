@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4572850
 Transform:
   m_ObjectHideFlags: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: acacia_fence
   lit: 0
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: acacia_fence
   lit: 0
@@ -373,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: coal_ore
   lit: 0
@@ -389,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: grass_block
   lit: 0
@@ -436,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212a46a8d9b14594fa6c595579b619b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: mymodel
   textureType: 0
@@ -883,6 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: grass
   lit: 0
@@ -1118,7 +1124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &707068470
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,6 +1185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 1.17.1
   domain: minecraft
   name: glass
   lit: 0
@@ -1195,6 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 1.17.1
   domain: minecraft
   name: red_stained_glass
   lit: 0
@@ -1215,7 +1223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &774391653
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,6 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 1.17.1
   realmDomain: minecraft
   realmName: flat
   id:
@@ -1291,6 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: sandstone_stairs
   lit: 0
@@ -1312,7 +1322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &903640857
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,6 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: floo-network
   realmName: witchcraft-and-wizardry
   id:
@@ -1392,6 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: floo-network
   realmName: witchcraft-and-wizardry
   id:
@@ -1410,6 +1422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: floo-network
   realmName: witchcraft-and-wizardry
   id:
@@ -1428,6 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: floo-network
   realmName: witchcraft-and-wizardry
   id:
@@ -1510,6 +1524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: wall_torch
   lit: 0
@@ -1530,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &954047438
 Transform:
   m_ObjectHideFlags: 0
@@ -1956,6 +1971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: torch
   lit: 0
@@ -2036,7 +2052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1158963688
 Transform:
   m_ObjectHideFlags: 0
@@ -2130,6 +2146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: sandstone_stairs
   lit: 0
@@ -2222,6 +2239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 1.17.1
   domain: minecraft
   name: prismarine_stairs
   lit: 0
@@ -2279,6 +2297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: red_mushroom_block
   lit: 0
@@ -2326,6 +2345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: sandstone_stairs
   lit: 0
@@ -2470,11 +2490,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581670171}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 1.17.1
   realmDomain: minecraft
   realmName: flat
   placeName: start
@@ -2485,11 +2506,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581670171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 1.16.3
   realmDomain: floo-network
   realmName: witchcraft-and-wizardry
   placeName: start
@@ -2505,6 +2527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 1.17.1
   realmDomain: minecraft
   realmName: default
   placeName: start
@@ -2551,6 +2574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: oak_leaves
   lit: 0
@@ -2772,6 +2796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: mossy_cobblestone_wall
   lit: 0
@@ -2881,6 +2906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: minecraft
   realmName: default
   id:
@@ -2899,6 +2925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realmVersion: 
   realmDomain: minecraft
   realmName: default
   id:
@@ -2953,6 +2980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212a46a8d9b14594fa6c595579b619b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: mymodel
   textureType: 0
@@ -3009,6 +3037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212a46a8d9b14594fa6c595579b619b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 
   domain: minecraft
   name: mymodel
   textureType: 0
