@@ -45,7 +45,7 @@ namespace Oasis.Core
 
         public Grpc.DomainName ToGrpc()
         {
-            return new Grpc.DomainName {Name = name.ToString(), Domain = domain.ToString()};
+            return new Grpc.DomainName {Version = version.ToString(), Name = name.ToString(), Domain = domain.ToString()};
         }
 
         public bool Equals(DomainName other)

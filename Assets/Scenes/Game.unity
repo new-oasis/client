@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4572850
 Transform:
   m_ObjectHideFlags: 0
@@ -760,6 +760,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bdfa6cf1ae7254ebe7b7fa31270eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version:
+    utf8LengthInBytes: 0
+    bytes:
+      offset0000:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      byte0016: 0
+      byte0017: 0
+      byte0018: 0
+      byte0019: 0
+      byte0020: 0
+      byte0021: 0
+      byte0022: 0
+      byte0023: 0
+      byte0024: 0
+      byte0025: 0
+      byte0026: 0
+      byte0027: 0
+      byte0028: 0
+      byte0029: 0
   distance: 1
   height: 1
   defaultPlace: 0
@@ -826,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &571227267
 Transform:
   m_ObjectHideFlags: 0
@@ -1138,6 +1172,8 @@ Transform:
   m_Children:
   - {fileID: 4572850}
   - {fileID: 903640857}
+  - {fileID: 2022705097}
+  - {fileID: 1590652781}
   m_Father: {fileID: 571227267}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1338,6 +1374,56 @@ Transform:
   m_Father: {fileID: 707068470}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &910841617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910841618}
+  - component: {fileID: 910841619}
+  m_Layer: 0
+  m_Name: journey-v1.02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &910841618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910841617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1590652781}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &910841619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910841617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.17.1
+  realmDomain: mythmega-and-lineaucent
+  realmName: journey-v1.02
+  id:
+    x: 672
+    y: 9
+    z: -6
 --- !u!1 &915204362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &954047438
 Transform:
   m_ObjectHideFlags: 0
@@ -2037,6 +2123,56 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 26c28f1b05e9be94689e58d3bda8369b, type: 3}
   m_SortingOrder: 0
+--- !u!1 &1133620607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133620608}
+  - component: {fileID: 1133620609}
+  m_Layer: 0
+  m_Name: worlds-collide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133620608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133620607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2022705097}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1133620609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133620607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.18.2
+  realmDomain: tanner_l
+  realmName: worlds-collide
+  id:
+    x: 7
+    y: 4
+    z: 48
 --- !u!1 &1158963687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,13 +2595,15 @@ GameObject:
   - component: {fileID: 1581670173}
   - component: {fileID: 1581670175}
   - component: {fileID: 1581670174}
+  - component: {fileID: 1581670177}
+  - component: {fileID: 1581670176}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1581670172
 Transform:
   m_ObjectHideFlags: 0
@@ -2490,12 +2628,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581670171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realmVersion: 1.17.1
+  realmVersion: 1.18.2
   realmDomain: minecraft
   realmName: flat
   placeName: start
@@ -2531,6 +2669,69 @@ MonoBehaviour:
   realmDomain: minecraft
   realmName: default
   placeName: start
+--- !u!114 &1581670176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581670171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.18.2
+  realmDomain: tanner_l
+  realmName: worlds-collide
+  placeName: start
+--- !u!114 &1581670177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581670171}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.17.1
+  realmDomain: mythmega-and-lineaucent
+  realmName: journey-0.12
+  placeName: start
+--- !u!1 &1590652780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1590652781}
+  m_Layer: 0
+  m_Name: mythmega-and-lineaucent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1590652781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590652780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 910841618}
+  m_Father: {fileID: 707068470}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1654927797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotAsset: {fileID: 9197481963319205126, guid: dbcec3c832a77274eb0d56ba4cb68a6d, type: 3}
+  version: 1.18.2
 --- !u!114 &1714308693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2937,6 +3139,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3263248639765073156, guid: 66e99af1a25928a4f9dc9add378b36c1, type: 3}
   m_PrefabInstance: {fileID: 506792384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2022705096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022705097}
+  m_Layer: 0
+  m_Name: tanner_l
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2022705097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022705096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1133620608}
+  m_Father: {fileID: 707068470}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2028204800
 GameObject:
   m_ObjectHideFlags: 0
