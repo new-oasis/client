@@ -23,6 +23,8 @@ namespace Oasis.Core
         // Liquid
         public bool liquid;
         public byte level; // Liquid level;  From state/block for mesher
+        public Entity still;
+        public Entity flow;
         
         // Textures
         public Entity up;

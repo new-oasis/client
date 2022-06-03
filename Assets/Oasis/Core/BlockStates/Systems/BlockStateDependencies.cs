@@ -26,16 +26,26 @@ public partial class BlockStateDependencies : SystemBase
             .WithNone<LoadedDependenciesTag, ModelRecord>()
             .ForEach((Entity e, int entityInQueryIndex, ref BlockState blockState) =>
             {
-                // if (blockState.blockType == BlockType.cube || blockState.blockType == BlockType.liquid)
-                if (!(
-                        (blockState.up != Entity.Null && !HasComponent<LoadedTag>(blockState.up)) ||
-                        (blockState.down != Entity.Null && !HasComponent<LoadedTag>(blockState.down)) ||
-                        (blockState.north != Entity.Null && !HasComponent<LoadedTag>(blockState.north)) ||
-                        (blockState.south != Entity.Null && !HasComponent<LoadedTag>(blockState.south)) ||
-                        (blockState.west != Entity.Null && !HasComponent<LoadedTag>(blockState.west)) ||
-                        (blockState.east != Entity.Null && !HasComponent<LoadedTag>(blockState.east))
-                    ))
-                    ecb.AddComponent<LoadedDependenciesTag>(entityInQueryIndex, e);
+                if (blockState.blockType == BlockType.liquid)
+                {
+                    if ( HasComponent<LoadedTag>(blockState.still) && HasComponent<LoadedTag>(blockState.flow) )
+                    {
+                        ecb.AddComponent<LoadedDependenciesTag>(entityInQueryIndex, e);
+                    }
+                    
+                }
+                else if (blockState.blockType == BlockType.cube)
+                {
+                    if (!(
+                            (blockState.up != Entity.Null && !HasComponent<LoadedTag>(blockState.up)) ||
+                            (blockState.down != Entity.Null && !HasComponent<LoadedTag>(blockState.down)) ||
+                            (blockState.north != Entity.Null && !HasComponent<LoadedTag>(blockState.north)) ||
+                            (blockState.south != Entity.Null && !HasComponent<LoadedTag>(blockState.south)) ||
+                            (blockState.west != Entity.Null && !HasComponent<LoadedTag>(blockState.west)) ||
+                            (blockState.east != Entity.Null && !HasComponent<LoadedTag>(blockState.east))
+                        ))
+                        ecb.AddComponent<LoadedDependenciesTag>(entityInQueryIndex, e);
+                }
                 // }).WithoutBurst().Run();
             }).Schedule();
 

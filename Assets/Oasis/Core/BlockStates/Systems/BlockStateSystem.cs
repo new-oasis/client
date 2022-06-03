@@ -76,10 +76,16 @@ namespace Oasis.Core
             blockState.blockType = SetBlockType(gModel.BlockType);
             blockState.textureType = SetTextureType(gModel.TextureType);
 
-            if (gModel.BlockType == Grpc.BlockType.Cube || gModel.BlockType == Grpc.BlockType.Liquid)
+            if (gModel.BlockType == Grpc.BlockType.Cube)
             {
-                // Debug.Log($"BlockStateSystem#LoadAsync Cube|Liquid {gBlockState}");
                 SetTextures(ref blockState, gModel);
+            }
+            else  if (gModel.BlockType == Grpc.BlockType.Liquid)
+            {
+                blockState.still = _textureSystem.Load(new Grpc.DomainName()
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = gModel.Textures["still"] });
+                blockState.flow = _textureSystem.Load(new Grpc.DomainName()
+                    { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = gModel.Textures["flow"] });
             }
             else if (gModel.BlockType == Grpc.BlockType.Model && gModel.Type == "block")
             {
