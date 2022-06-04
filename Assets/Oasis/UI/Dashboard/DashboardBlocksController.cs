@@ -21,6 +21,7 @@ public class DashboardBlocksController : MonoBehaviour
     private VisualElement blocks;
 
     public VisualTreeAsset slotAsset;
+    public string version;
 
     private static DashboardBlocksController _instance;
     public static DashboardBlocksController Instance => _instance;
@@ -152,7 +153,7 @@ public class DashboardBlocksController : MonoBehaviour
             StartCoroutine(UpdateGrid(defaults));
         else
         {
-            Oasis.Grpc.DomainName request = new Oasis.Grpc.DomainName {Domain = "*", Name = evt.newValue};
+            Oasis.Grpc.DomainName request = new Oasis.Grpc.DomainName {Version = version, Domain = "*", Name = evt.newValue};
             var ids = Client.Instance.client.SearchBlocks(request, Client.Instance.Metadata).Value;
             StartCoroutine(UpdateGrid(ids));
         }
@@ -168,7 +169,7 @@ public class DashboardBlocksController : MonoBehaviour
         if (defaults != null)
             yield return null;
             
-        Oasis.Grpc.DomainName request = new Oasis.Grpc.DomainName {Domain = "*", Name = "_ore"};
+        Oasis.Grpc.DomainName request = new Oasis.Grpc.DomainName {Version = version, Domain = "*", Name = "_ore"};
         defaults = Client.Instance.client.SearchBlocks(request, Client.Instance.Metadata).Value;
     }
             
