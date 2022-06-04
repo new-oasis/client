@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "com.bovinelabs.event": "1.2.3",
-    "com.unity.collab-proxy": "1.15.16",
+    "com.unity.collab-proxy": "1.15.17",
     "com.unity.editoriterationprofiler": "0.1.2-preview",
     "com.unity.entities": "0.50.1-preview.2",
     "com.unity.ide.rider": "3.0.14",

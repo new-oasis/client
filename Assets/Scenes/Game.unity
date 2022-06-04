@@ -760,6 +760,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01bdfa6cf1ae7254ebe7b7fa31270eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version:
+    utf8LengthInBytes: 0
+    bytes:
+      offset0000:
+        byte0000: 0
+        byte0001: 0
+        byte0002: 0
+        byte0003: 0
+        byte0004: 0
+        byte0005: 0
+        byte0006: 0
+        byte0007: 0
+        byte0008: 0
+        byte0009: 0
+        byte0010: 0
+        byte0011: 0
+        byte0012: 0
+        byte0013: 0
+        byte0014: 0
+        byte0015: 0
+      byte0016: 0
+      byte0017: 0
+      byte0018: 0
+      byte0019: 0
+      byte0020: 0
+      byte0021: 0
+      byte0022: 0
+      byte0023: 0
+      byte0024: 0
+      byte0025: 0
+      byte0026: 0
+      byte0027: 0
+      byte0028: 0
+      byte0029: 0
   distance: 1
   height: 1
   defaultPlace: 0
@@ -806,8 +840,10 @@ Transform:
   m_Children:
   - {fileID: 1102867820}
   - {fileID: 945805952}
-  - {fileID: 1527209186}
   - {fileID: 1178618778}
+  - {fileID: 1925412861}
+  - {fileID: 1489958326}
+  - {fileID: 657393939}
   m_Father: {fileID: 1786870915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -893,6 +929,60 @@ MonoBehaviour:
   name: grass
   lit: 0
   states: []
+--- !u!1 &657393938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657393939}
+  - component: {fileID: 657393940}
+  m_Layer: 0
+  m_Name: Trapdoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657393939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657393938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 546288024}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &657393940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657393938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1.16.3
+  domain: minecraft
+  name: spruce_trapdoor
+  lit: 0
+  states:
+  - key: open
+    value: true
+  - key: waterlogged
+    value: false
+  - key: facing
+    value: east
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1348,10 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &852960334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1486,10 @@ MonoBehaviour:
     x: 144
     y: 3
     z: -60
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &915204365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,6 +1509,10 @@ MonoBehaviour:
     x: 144
     y: 4
     z: -60
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &915204366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,6 +1532,10 @@ MonoBehaviour:
     x: 143
     y: 4
     z: -60
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &915204367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1555,10 @@ MonoBehaviour:
     x: 143
     y: 3
     z: -60
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &929898953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929898954}
   - component: {fileID: 929898955}
+  - component: {fileID: 929898956}
   m_Layer: 0
   m_Name: sword-island
   m_TagString: Untagged
@@ -1474,13 +1585,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929898953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 656, y: 64, z: 368}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148193573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &929898955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929898953}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b6bc6d8518fac48baf27396f944cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.16.3
+  realmDomain: closeedbr
+  realmName: sword-island
+  id:
+    x: 41
+    y: 4
+    z: 23
+  range:
+    x: 0
+    y: 1
+    z: 1
+--- !u!114 &929898956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1496,9 +1630,13 @@ MonoBehaviour:
   realmDomain: closeedbr
   realmName: sword-island
   id:
-    x: 41
+    x: 42
     y: 4
-    z: 23
+    z: 24
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &933799270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 
+  version: 1.16.3
   domain: minecraft
   name: torch
   lit: 0
@@ -2163,12 +2301,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1178618778}
   m_Layer: 0
-  m_Name: stairs
+  m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1178618778
 Transform:
   m_ObjectHideFlags: 0
@@ -2184,7 +2322,7 @@ Transform:
   - {fileID: 1209474597}
   - {fileID: 1284493041}
   m_Father: {fileID: 546288024}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1209474596
 GameObject:
@@ -2433,7 +2571,7 @@ MonoBehaviour:
   name: water
   lit: 0
   states: []
---- !u!1 &1527209185
+--- !u!1 &1489958325
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2441,46 +2579,79 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1527209186}
-  - component: {fileID: 1527209187}
+  - component: {fileID: 1489958326}
   m_Layer: 0
-  m_Name: Stairs
+  m_Name: Slabs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &1527209186
+--- !u!4 &1489958326
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527209185}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1489958325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1531191571}
+  m_Father: {fileID: 546288024}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1531191570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531191571}
+  - component: {fileID: 1531191572}
+  m_Layer: 0
+  m_Name: Doubles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1531191571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531191570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 546288024}
-  m_RootOrder: 2
+  m_Father: {fileID: 1489958326}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1527209187
+--- !u!114 &1531191572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527209185}
+  m_GameObject: {fileID: 1531191570}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 
+  version: 1.16.3
   domain: minecraft
-  name: sandstone_stairs
+  name: mossy_cobblestone_slab
   lit: 0
-  states: []
+  states:
+  - key: type
+    value: double
 --- !u!1 &1535178219
 GameObject:
   m_ObjectHideFlags: 1
@@ -2743,6 +2914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotAsset: {fileID: 9197481963319205126, guid: dbcec3c832a77274eb0d56ba4cb68a6d, type: 3}
+  version: 
 --- !u!114 &1714308693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3044,6 +3216,10 @@ MonoBehaviour:
     x: 0
     y: 4
     z: 0
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &1825600661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,11 +3239,63 @@ MonoBehaviour:
     x: 0
     y: 3
     z: 0
+  range:
+    x: 0
+    y: 0
+    z: 0
 --- !u!4 &1875534932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3263248639765073156, guid: 66e99af1a25928a4f9dc9add378b36c1, type: 3}
   m_PrefabInstance: {fileID: 506792384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1925412860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1925412861}
+  - component: {fileID: 1925412862}
+  m_Layer: 0
+  m_Name: Ladder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1925412861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925412860}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 546288024}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925412862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925412860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1.16.3
+  domain: minecraft
+  name: ladder
+  lit: 0
+  states: []
 --- !u!1 &2028204800
 GameObject:
   m_ObjectHideFlags: 0

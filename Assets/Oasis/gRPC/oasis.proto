@@ -39,20 +39,19 @@ message Places {
 // Model
 message Model {
   uint32 id   = 1;
-  string type = 2;
-  DomainName domainName = 3;
-  map<string,string> textures = 4;
-  repeated Element elements = 5;
-  string north = 6;
-  string south = 7;
-  string east = 8;
-  string west = 9;
-  string up = 10;
-  string down = 11;
-  BlockType blockType = 12;
-  TextureType textureType = 13;
-  int32 x = 14;
-  int32 y = 15;
+  DomainName domainName = 2;
+  map<string,string> textures = 3;
+  repeated Element elements = 4;
+  string north = 5;
+  string south = 6;
+  string east = 7;
+  string west = 8;
+  string up = 9;
+  string down = 10;
+  BlockType blockType = 11;
+  TextureType textureType = 12;
+  int32 x = 13;
+  int32 y = 14;
 
   message Element{
     repeated float from = 1;

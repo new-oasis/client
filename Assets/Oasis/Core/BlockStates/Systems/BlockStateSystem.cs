@@ -80,6 +80,10 @@ namespace Oasis.Core
             {
                 SetTextures(ref blockState, gModel);
             }
+            else  if (gModel.BlockType == Grpc.BlockType.Air)
+            {
+                EntityManager.AddComponent<LoadedDependenciesTag>(e);
+            }
             else  if (gModel.BlockType == Grpc.BlockType.Liquid)
             {
                 blockState.still = _textureSystem.Load(new Grpc.DomainName()
@@ -87,11 +91,11 @@ namespace Oasis.Core
                 blockState.flow = _textureSystem.Load(new Grpc.DomainName()
                     { Version = gModel.DomainName.Version, Domain = gModel.DomainName.Domain, Name = gModel.Textures["flow"] });
             }
-            else if (gModel.BlockType == Grpc.BlockType.Model && gModel.Type == "block")
-            {
-                // Debug.Log($"BlockStateSystem#LoadAsync model block {gBlockState}");
-                SetTextures(ref blockState, gModel);
-            }
+            // else if (gModel.BlockType == Grpc.BlockType.Model && gModel.Type == "block")
+            // {
+            //     // Debug.Log($"BlockStateSystem#LoadAsync model block {gBlockState}");
+            //     SetTextures(ref blockState, gModel);
+            // }
             else if (gModel.BlockType == Grpc.BlockType.Model)
             {
                 // Debug.Log($"BlockStateSystem#LoadAsync Model {gBlockState}");
@@ -215,6 +219,8 @@ namespace Oasis.Core
                     return BlockType.liquid;
                 case Grpc.BlockType.Model:
                     return BlockType.model;
+                case Grpc.BlockType.Air:
+                    return BlockType.air;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
