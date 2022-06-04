@@ -120,10 +120,6 @@ namespace Oasis.Core
             EntityManager.AddComponent<LoadTag>(e);
             return e;
         }
-
-        
-        
-        
         
         public void UnloadAll()
         {
