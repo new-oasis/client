@@ -1611,7 +1611,7 @@ MonoBehaviour:
     y: 4
     z: 23
   range:
-    x: 0
+    x: 1
     y: 1
     z: 1
 --- !u!114 &929898956
@@ -1630,9 +1630,9 @@ MonoBehaviour:
   realmDomain: closeedbr
   realmName: sword-island
   id:
-    x: 42
+    x: 43
     y: 4
-    z: 24
+    z: 25
   range:
     x: 0
     y: 0

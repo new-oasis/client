@@ -97,6 +97,7 @@ namespace Oasis.Core
             }
             catch (RpcException exception)
             {
+                _em.AddComponent<Missing>(e);
                 _em.SetComponentData(e, new ShaderColor(){Value = new float4(1,0,0,0)});
                 Debug.LogWarning($"Chunk#Create {chunk.id} \t {exception.Message}");
             }

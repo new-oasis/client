@@ -20,7 +20,9 @@ public partial class DebugChunkLoading : SystemBase
     protected override void OnUpdate()
     {
         
-        Entities.ForEach((ref Entity e, ref LoadingTag loadingTags, ref Chunk chunk) =>
+        Entities
+            .WithNone<Missing>()
+            .ForEach((ref Entity e, ref LoadingTag loadingTags, ref Chunk chunk) =>
         {
             if (!loading.ContainsKey(e))
                 loading[e] = 0;
