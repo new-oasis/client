@@ -12,6 +12,7 @@ public class ExampleChunk : MonoBehaviour
     public string realmName;
     public int3 id;
     public int3 range;
+    public bool lit;
 
     void Start()
     {
@@ -47,7 +48,7 @@ public class ExampleChunk : MonoBehaviour
 
                     var chunkSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<ChunkSystem>();
                     chunkSystem._entities[id] = e;
-                    em.AddComponent<VisibleTag>(e);
+                    em.AddComponentData(e, new VisibleTag{lit = lit});
                 }
             }
         }
