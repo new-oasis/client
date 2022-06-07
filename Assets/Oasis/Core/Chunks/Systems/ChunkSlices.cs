@@ -44,8 +44,8 @@ namespace Oasis.Core
                     Entity down = chunkEntities.ContainsKey(downId) ? chunkEntities[downId] : Entity.Null;
                     if (HasComponent<LoadedDependenciesTag>(down) && childBuffers.HasComponent(down))
                     {
-                        SliceSystem.CreateSlice(ecb, entityInQueryIndex, down, 15, 1, visibleTag.lit);
-                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, down);
+                        var slice = SliceSystem.CreateSlice(ecb, entityInQueryIndex, down, 15, 1, visibleTag.lit);
+                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, slice); 
                     }
 
                     // South
@@ -53,8 +53,8 @@ namespace Oasis.Core
                     Entity south = chunkEntities.ContainsKey(southId) ? chunkEntities[southId] : Entity.Null;
                     if (HasComponent<LoadedDependenciesTag>(south) && childBuffers.HasComponent(south))
                     {
-                        SliceSystem.CreateSlice(ecb, entityInQueryIndex, south, 15, 2, visibleTag.lit);
-                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, south);
+                        var slice = SliceSystem.CreateSlice(ecb, entityInQueryIndex, south, 15, 2, visibleTag.lit);
+                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, slice);
                     }
                     
                     
@@ -63,8 +63,8 @@ namespace Oasis.Core
                     Entity west = chunkEntities.ContainsKey(westId) ? chunkEntities[westId] : Entity.Null;
                     if (HasComponent<LoadedDependenciesTag>(west) && childBuffers.HasComponent(west))
                     {
-                        SliceSystem.CreateSlice(ecb, entityInQueryIndex, west, 15, 0, visibleTag.lit);
-                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, west);
+                        var slice = SliceSystem.CreateSlice(ecb, entityInQueryIndex, west, 15, 0, visibleTag.lit);
+                        ecb.AddComponent<DupeCheck>(entityInQueryIndex, slice);
                     }
                     
                     ecb.RemoveComponent<CreateSlices>(entityInQueryIndex, e);

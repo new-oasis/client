@@ -85,7 +85,7 @@ namespace Oasis.Core
             return slice;
         }
         
-        public static void CreateSlice(EntityCommandBuffer.ParallelWriter ecb, int entityInQueryIndex, Entity parent, int depth, int axis, bool lit, int3 dims = new int3())
+        public static Entity CreateSlice(EntityCommandBuffer.ParallelWriter ecb, int entityInQueryIndex, Entity parent, int depth, int axis, bool lit, int3 dims = new int3())
         {
             var slice = ecb.CreateEntity(entityInQueryIndex);
 
@@ -107,6 +107,7 @@ namespace Oasis.Core
             ecb.AddComponent(entityInQueryIndex, slice, new Parent {Value = parent});
             ecb.AddComponent(entityInQueryIndex, slice, new LocalToWorld { });
             ecb.AddComponent(entityInQueryIndex, slice, new LocalToParent {Value = new float4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)});
+            return slice;
         }
     }
 
