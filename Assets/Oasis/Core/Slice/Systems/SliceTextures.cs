@@ -34,6 +34,7 @@ namespace Oasis.Core
                     var aTextures = aTexturesBuffer.Reinterpret<Entity>();
                     var bTextures = bTexturesBuffer.Reinterpret<Entity>();
 
+                    // Slice has liquid?
                     var aHasLiquid = false;
                     var bHasLiquid = false;
                     
@@ -82,8 +83,8 @@ namespace Oasis.Core
                         bTextures.Add(bTexture);
                     }
 
-                    // if (aHasLiquid || bHasLiquid)
-                        // ecb.AddComponent(entityInQueryIndex, e, new HasLiquidTag{SideA = aHasLiquid, SideB = bHasLiquid});
+                    if (aHasLiquid || bHasLiquid)
+                        ecb.AddComponent(entityInQueryIndex, e, new HasLiquidTag{SideA = aHasLiquid, SideB = bHasLiquid});
                         
                     ecb.RemoveComponent<ComputeTextures>(entityInQueryIndex, e);
                 })
@@ -96,6 +97,9 @@ namespace Oasis.Core
 
         private static Entity ComputeTexture(BlockState blockState, Side side)
         {
+            if (blockState.blockType == BlockType.liquid)
+                return blockState.still;
+                
             return side switch
             {
                 // TODO rotation
@@ -107,6 +111,7 @@ namespace Oasis.Core
                 Side.West => blockState.west,
                 _ => blockState.up
             };
+            
         }
     }
 }

@@ -61,8 +61,8 @@ namespace Oasis.Core
                                 var sideTexture = sideTextures[i];
                                 var sideBlockState = sideBlockStates[i];
                                                                          
-                                // If texture and not liquid;  TODO optimize liquid check
-                                if (!sideTexture.Equals(Entity.Null) && !blockStates[sideBlockState].liquid)
+                                // If non-liquid texture 
+                                if (!sideTexture.Equals(Entity.Null) && blockStates[sideBlockState].blockType != BlockType.liquid)
                                 {
                                     int width;
                                     for (width = 1;

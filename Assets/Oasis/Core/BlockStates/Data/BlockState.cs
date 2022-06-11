@@ -21,8 +21,9 @@ namespace Oasis.Core
         public Core.TextureType textureType;
         
         // Liquid
-        public bool liquid;
+        // public bool liquid; // Use blockType == BlockType.Liquid
         public byte level; // Liquid level;  From state/block for mesher
+        
         public Entity still;
         public Entity flow;
         

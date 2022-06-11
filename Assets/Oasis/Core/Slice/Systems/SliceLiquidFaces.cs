@@ -1,3 +1,5 @@
+// Create liquid faces from LiquidCorners
+
 using System.Threading.Tasks;
 using Unity.Entities;
 using Unity.Collections;

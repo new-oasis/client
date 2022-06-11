@@ -26,18 +26,18 @@ namespace Oasis.Core
             .WithAll<RemoveUnused>()
             .ForEach((Entity e, int entityInQueryIndex, in Slice Slice) =>
             {
-                if (!childBuffers.HasComponent(e))
-                    ecb.DestroyEntity(entityInQueryIndex, e);
-                else
-                {
-                    var children = childBuffers[e];
-                    if (children.Length == 0)
-                        ecb.DestroyEntity(entityInQueryIndex, e);
-                }
-                ecb.RemoveComponent<RemoveUnused>(entityInQueryIndex, e);
+                // if (!childBuffers.HasComponent(e))
+                //     ecb.DestroyEntity(entityInQueryIndex, e);
+                // else
+                // {
+                //     var children = childBuffers[e];
+                //     if (children.Length == 0)
+                //         ecb.DestroyEntity(entityInQueryIndex, e);
+                // }
+                // ecb.RemoveComponent<RemoveUnused>(entityInQueryIndex, e);
 
             })
-            .WithReadOnly(childBuffers)
+            // .WithReadOnly(childBuffers)
             .ScheduleParallel();
 
 

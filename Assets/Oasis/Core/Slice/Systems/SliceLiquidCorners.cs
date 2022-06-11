@@ -59,7 +59,7 @@ namespace Oasis.Core
                                 : blockStates[sideBBlockStates[i].Value];
 
                             // if not liquid.. continue  // TODO optimize this sparse array
-                            if (!blockState.liquid)
+                            if (blockState.blockType != BlockType.liquid)
                             {
                                 corners.Add(new float4());
                                 continue;
@@ -70,14 +70,16 @@ namespace Oasis.Core
                             byte east = 0;
                             byte south = 0;
                             byte west = 0;
+                            byte full = 8;
 
+                            //  if north is within chunk...grab it's level
                             if (!slice.Dims.OOB(current3.North()))
                             {
                                 var northIndex = current3.North().ToIndex(slice.Dims);
                                 var northVoxel = parentVoxels[northIndex];
                                 var northBlockStateEntity = parentBlockStates[northVoxel.Value];
                                 var northBlockState = blockStates[northBlockStateEntity.Value];
-                                north = northBlockState.liquid ? northBlockState.level : (byte)0;
+                                north = northBlockState.blockType == BlockType.liquid ? (byte)(full - northBlockState.level) : (byte)0;
                             }
                             if (!slice.Dims.OOB(current3.East()))
                             {
@@ -85,7 +87,7 @@ namespace Oasis.Core
                                 var eastVoxel = parentVoxels[eastIndex];
                                 var eastBlockStateEntity = parentBlockStates[eastVoxel.Value];
                                 var eastBlockState = blockStates[eastBlockStateEntity.Value];
-                                east = eastBlockState.liquid ? eastBlockState.level : (byte)0;
+                                east = eastBlockState.blockType == BlockType.liquid ? (byte)(full - eastBlockState.level) : (byte)0;
                             }
                             if (!slice.Dims.OOB(current3.South()))
                             {
@@ -93,7 +95,7 @@ namespace Oasis.Core
                                 var southVoxel = parentVoxels[southIndex];
                                 var southBlockStateEntity = parentBlockStates[southVoxel.Value];
                                 var southBlockState = blockStates[southBlockStateEntity.Value];
-                                south = southBlockState.liquid ? southBlockState.level : (byte)0;
+                                south = southBlockState.blockType == BlockType.liquid ? (byte)(full-southBlockState.level) : (byte)0;
                             }
                             if (!slice.Dims.OOB(current3.West()))
                             {
@@ -101,11 +103,11 @@ namespace Oasis.Core
                                 var westVoxel = parentVoxels[westIndex];
                                 var westBlockStateEntity = parentBlockStates[westVoxel.Value];
                                 var westBlockState = blockStates[westBlockStateEntity.Value];
-                                west = westBlockState.liquid ? westBlockState.level : (byte)0;
+                                west = westBlockState.blockType == BlockType.liquid ? (byte)(full-westBlockState.level) : (byte)0;
                             }
                         
                             // Compute corners
-                            var current = blockState.level;
+                            var current = (byte)(8-blockState.level); // level == 0 == full; 1 == full-1
                             var northEastCorner = AverageLevel(current, north, east);
                             var northWestCorner = AverageLevel(current, north, west);
                             var southEastCorner = AverageLevel(current, south, east);

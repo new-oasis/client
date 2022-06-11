@@ -28,6 +28,7 @@ namespace Oasis.Core
                     for (var axis = 0; axis < 3; axis++)
                     for (var depth = -1; depth < 1; depth++)
                     {
+                        Debug.Log("Creating slice");
                         SliceSystem.CreateSlice(ecb, entityInQueryIndex, e, depth, axis, false, new int3(1));
                     }
                     ecb.RemoveComponent<CreateSlices>(entityInQueryIndex, e);
