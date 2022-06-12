@@ -38,7 +38,7 @@ public class ExampleChunk : MonoBehaviour
 
                     var id = new int3 {x = x, y = y, z = z};
                     var e = em.Instantiate(chunkPrefab);
-                    em.AddComponentData(e, new Translation {Value = new float3(id * 16)});
+                    em.AddComponentData(e, new Translation { Value = id.FlipZ() * 16 });
                     em.AddComponentData(e, new CreateSlices { });
                     em.AddComponentData(e, new LoadTag { });
                     em.AddComponentData(e, new Chunk() {id = id});

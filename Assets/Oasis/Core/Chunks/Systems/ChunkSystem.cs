@@ -115,7 +115,7 @@ namespace Oasis.Core
         
             // LTW and Translation
             EntityManager.AddComponentData(e, new LocalToWorld {Value = new float4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0)});
-            EntityManager.AddComponentData(e, new Translation { Value = new float3(id) * 16 });
+            EntityManager.AddComponentData(e, new Translation { Value = id.FlipZ() * 16 });
             
             EntityManager.AddComponent<CreateSlices>(e);
             EntityManager.AddComponent<LoadTag>(e);

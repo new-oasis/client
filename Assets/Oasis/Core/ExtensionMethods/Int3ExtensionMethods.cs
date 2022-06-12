@@ -86,6 +86,11 @@ public static class Int3ExtensionMethods
     {
         return new Int3() {X = i.x, Y = i.y, Z = i.z};
     }
+    public static int3 FlipZ(this int3 id)
+    {
+        return new int3(id.x, id.y, 0-id.z);
+        
+    }
     
     public static Int32[] ToArr(this int3 i)
     {

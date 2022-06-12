@@ -27,7 +27,7 @@ namespace Oasis.Core
             
             Entities
                 .WithNone<ModelEntity>()
-                .WithAll<LoadedDependenciesTag, VisibleTag>()
+                .WithAll<LoadedDependenciesTag>() 
                 .ForEach((Entity e, int entityInQueryIndex, in Chunk chunk, in VisibleTag visibleTag, in DynamicBuffer<BlockStateElement> blockStateElements, in DynamicBuffer<VoxelElement> voxels) =>
                 {
                     ecb.AddBuffer<ModelEntity>(entityInQueryIndex, e);
@@ -49,7 +49,7 @@ namespace Oasis.Core
                                 ecb.AddComponent(entityInQueryIndex, modelInstance, new LocalToParent {Value = new float4x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)});
                                 
                                 
-                                ecb.AddComponent(entityInQueryIndex, modelInstance, new ModelInstance() {blockState = blockStateEntity, lit = true});
+                                ecb.AddComponent(entityInQueryIndex, modelInstance, new ModelInstance() {blockState = blockStateEntity, lit = visibleTag.lit});
                                 ecb.AddComponent(entityInQueryIndex, modelInstance, 
                                 new Translation() {Value = new float3(x,y,z) + new float3(0.5f)});
                                 
