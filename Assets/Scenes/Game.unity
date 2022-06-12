@@ -575,6 +575,54 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: c6c4ac6fa75f93d45a726866978a311f, type: 3}
   m_SortingOrder: 0
+--- !u!1 &284844684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284844685}
+  - component: {fileID: 284844686}
+  m_Layer: 0
+  m_Name: Vine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284844685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284844684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 546288024}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284844686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284844684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafe2f534b3c46b7adbb030394347e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1.16.3
+  domain: minecraft
+  name: vine
+  lit: 0
+  states: []
 --- !u!1 &361669632
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,8 +842,8 @@ MonoBehaviour:
       byte0027: 0
       byte0028: 0
       byte0029: 0
-  distance: 1
-  height: 1
+  distance: 2
+  height: 2
   defaultPlace: 0
   gravity: 0
 --- !u!114 &545554624
@@ -844,6 +892,7 @@ Transform:
   - {fileID: 1925412861}
   - {fileID: 1489958326}
   - {fileID: 657393939}
+  - {fileID: 284844685}
   m_Father: {fileID: 1786870915}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -862,7 +911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571227267
 Transform:
   m_ObjectHideFlags: 0
@@ -995,7 +1044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657393939
 Transform:
   m_ObjectHideFlags: 0
@@ -1661,13 +1710,13 @@ MonoBehaviour:
   realmDomain: closeedbr
   realmName: sword-island
   id:
-    x: 46
-    y: 6
+    x: 48
+    y: 7
     z: 23
   range:
-    x: 2
-    y: 2
-    z: 2
+    x: 1
+    y: 4
+    z: 1
   lit: 0
 --- !u!1 &933799270
 GameObject:
@@ -1766,7 +1815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &954047438
 Transform:
   m_ObjectHideFlags: 0
@@ -2776,13 +2825,14 @@ GameObject:
   - component: {fileID: 1581670173}
   - component: {fileID: 1581670175}
   - component: {fileID: 1581670174}
+  - component: {fileID: 1581670176}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1581670172
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,7 +2857,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581670171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
@@ -2847,6 +2897,22 @@ MonoBehaviour:
   realmVersion: 1.17.1
   realmDomain: minecraft
   realmName: default
+  placeName: start
+--- !u!114 &1581670176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581670171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.16.3
+  realmDomain: closeedbr
+  realmName: sword-island
   placeName: start
 --- !u!1 &1654927797
 GameObject:
@@ -2929,7 +2995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotAsset: {fileID: 9197481963319205126, guid: dbcec3c832a77274eb0d56ba4cb68a6d, type: 3}
-  version: 
+  version: 1.16.3
 --- !u!114 &1714308693
 MonoBehaviour:
   m_ObjectHideFlags: 0
