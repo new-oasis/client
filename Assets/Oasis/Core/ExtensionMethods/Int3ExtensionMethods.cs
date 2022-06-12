@@ -17,7 +17,9 @@ public static class Int3ExtensionMethods
         if (dims.Equals(default(int3)))
             dims = new int3(16);
 
-        return ((i.z * dims.y * dims.x) + (i.y * dims.x) + i.x); // zyx
+        // return ((i.z * dims.y * dims.x) + (i.y * dims.x) + i.x); // zyx
+        // return ((i.x * dims.y * dims.z) + (i.y * dims.z) + i.z); // xyz
+        return ((i.x * dims.y * dims.z) + (i.y * dims.z) + (dims.z-1-i.z)); // xyz
     }
 
     public static int3 Chunk(this int3 i)

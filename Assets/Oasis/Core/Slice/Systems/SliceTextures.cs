@@ -62,7 +62,7 @@ namespace Oasis.Core
                         // Front faces
                         if ((aIsOpaqueCube && !bIsOpaqueCube) ||
                             (aIsTransCube && !bIsTransCube && !bIsOpaqueCube) ||
-                            (aIsLiquid && !bIsLiquid && !bIsOpaqueCube) ||
+                            (aIsLiquid && !bIsLiquid && !bIsOpaqueCube && !bBlockState.waterlogged) ||
                             (aIsAlphaClipCube && !bIsAlphaClipCube && !bIsOpaqueCube))
                         {
                             Side side = (Side)(slice.Axis % 6);
@@ -72,7 +72,7 @@ namespace Oasis.Core
                         // Back faces
                         if ((bIsOpaqueCube && !aIsOpaqueCube) ||
                             (bIsTransCube && !aIsTransCube && !aIsOpaqueCube) ||
-                            (bIsLiquid && !aIsLiquid && !aIsOpaqueCube) ||
+                            (bIsLiquid && !aIsLiquid && !aIsOpaqueCube && !aBlockState.waterlogged) ||
                             (bIsAlphaClipCube && !aIsAlphaClipCube && !aIsOpaqueCube))
                         {
                             Side side = (Side)(3+slice.Axis % 6);

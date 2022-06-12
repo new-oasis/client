@@ -111,6 +111,24 @@ namespace Oasis.Core
                         _textureSystem.Load(new Grpc.DomainName {Version = gBlockState.Block.Version, Domain = "minecraft", Name = actual});
                     }
                 }
+
+                // Get waterlogged value
+                if (gBlockState.State.TryGetValue("waterlogged", out string waterlogged))
+                    blockState.waterlogged = bool.Parse(gBlockState.State["waterlogged"]);
+                
+                // Convert facing to rotation
+                if (gBlockState.State.TryGetValue("facing", out string facing))
+                {
+                    if (facing == "north")
+                        gModel.Y += 180;
+                    else if (facing == "south")
+                        gModel.Y += 180;
+                    else if (facing == "east")
+                        gModel.Y += 180;
+                    else if (facing == "west")
+                        gModel.Y += 180;
+                }
+                
             }
 
             // Rotation

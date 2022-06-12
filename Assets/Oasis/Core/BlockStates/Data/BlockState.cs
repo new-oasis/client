@@ -23,6 +23,7 @@ namespace Oasis.Core
         // Liquid
         // public bool liquid; // Use blockType == BlockType.Liquid
         public byte level; // Liquid level;  From state/block for mesher
+        public bool waterlogged;
         
         public Entity still;
         public Entity flow;
