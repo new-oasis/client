@@ -53,7 +53,7 @@ namespace Oasis.Core
 
                     if (i < range)
                     {
-                        EntityManager.AddComponentData(newChunk, new VisibleTag { lit = true});
+                        EntityManager.AddComponentData(newChunk, new VisibleTag { lit = settings.lit});
                         EntityManager.RemoveComponent<PhysicsCollider>(newChunk);
                     }
 

@@ -794,10 +794,11 @@ MonoBehaviour:
       byte0027: 0
       byte0028: 0
       byte0029: 0
-  distance: 1
-  height: 1
+  distance: 3
+  height: 2
   defaultPlace: 0
   gravity: 0
+  lit: 0
 --- !u!114 &545554624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571227267
 Transform:
   m_ObjectHideFlags: 0
@@ -1661,8 +1662,8 @@ MonoBehaviour:
   realmDomain: closeedbr
   realmName: sword-island
   id:
-    x: 46
-    y: 6
+    x: 44
+    y: 4
     z: 23
   range:
     x: 2
@@ -1766,7 +1767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &954047438
 Transform:
   m_ObjectHideFlags: 0
@@ -2776,13 +2777,14 @@ GameObject:
   - component: {fileID: 1581670173}
   - component: {fileID: 1581670175}
   - component: {fileID: 1581670174}
+  - component: {fileID: 1581670176}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1581670172
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,7 +2809,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581670171}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
   m_Name: 
@@ -2847,6 +2849,22 @@ MonoBehaviour:
   realmVersion: 1.17.1
   realmDomain: minecraft
   realmName: default
+  placeName: start
+--- !u!114 &1581670176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581670171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e57a48975ee1544b2ee91d493d5c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmVersion: 1.16.3
+  realmDomain: closeedbr
+  realmName: sword-island
   placeName: start
 --- !u!1 &1654927797
 GameObject:
@@ -2929,7 +2947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotAsset: {fileID: 9197481963319205126, guid: dbcec3c832a77274eb0d56ba4cb68a6d, type: 3}
-  version: 
+  version: 1.16.3
 --- !u!114 &1714308693
 MonoBehaviour:
   m_ObjectHideFlags: 0

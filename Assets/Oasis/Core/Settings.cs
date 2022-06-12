@@ -12,4 +12,5 @@ public struct Settings : IComponentData
     public int height;
     public int defaultPlace;
     public int gravity;
+    public bool lit;
 }
