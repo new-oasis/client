@@ -45,7 +45,7 @@ namespace Oasis.Core
                 {
                     var newChunk = EntityManager.Instantiate(prefab);
                     EntityManager.AddComponentData(newChunk, new Chunk() {id = id});
-                    EntityManager.AddComponentData(newChunk, new Translation {Value = new float3(id * 16)});
+                    EntityManager.AddComponentData(newChunk, new Translation { Value = id.FlipZ() * 16 });
                     EntityManager.AddComponentData(newChunk, new CreateSlices { });
                     EntityManager.AddComponentData(newChunk, new LoadTag { });
 

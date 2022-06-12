@@ -12,7 +12,7 @@ namespace Oasis.UI
         public static Debug Instance => _instance;
     
         private VisualElement _root;
-        private float _nextActionTime;
+        public float _nextActionTime;
         public float period = 0.1f;
 
         void Awake()
