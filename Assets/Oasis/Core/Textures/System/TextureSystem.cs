@@ -18,8 +18,8 @@ namespace Oasis.Core
         private Dictionary<TextureType, Entity[]> _elements;
         public Dictionary<Grpc.DomainName, Entity> _entities;
 
-        private NativeHashMap<FixedString32Bytes, int> _indexes; // texture to array index
-        private NativeHashMap<FixedString32Bytes, TextureType> _types; // texture to TextureType
+        private NativeParallelHashMap<FixedString32Bytes, int> _indexes; // texture to array index
+        private NativeParallelHashMap<FixedString32Bytes, TextureType> _types; // texture to TextureType
 
         readonly int arraySize = 512;
         readonly int textureSize = 16;
@@ -43,8 +43,8 @@ namespace Oasis.Core
 
         protected override void OnCreate()
         {
-            _indexes = new NativeHashMap<FixedString32Bytes, int>(512, Allocator.Persistent);
-            _types = new NativeHashMap<FixedString32Bytes, TextureType>(512, Allocator.Persistent);
+            _indexes = new NativeParallelHashMap<FixedString32Bytes, int>(512, Allocator.Persistent);
+            _types = new NativeParallelHashMap<FixedString32Bytes, TextureType>(512, Allocator.Persistent);
             _arrays = new Dictionary<TextureType, Texture2DArray>();
             _elements = new Dictionary<TextureType, Entity[]>();
             _entities = new Dictionary<Grpc.DomainName, Entity>();

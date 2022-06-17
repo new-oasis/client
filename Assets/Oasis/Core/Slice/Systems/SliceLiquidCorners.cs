@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using ICSharpCode.NRefactory.Ast;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;

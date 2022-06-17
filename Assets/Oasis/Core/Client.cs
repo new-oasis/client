@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Grpc.Core.Utils;
-using ICSharpCode.NRefactory.Ast;
 using Oasis.Core;
 using Oasis.Grpc;
 using Unity.Mathematics;

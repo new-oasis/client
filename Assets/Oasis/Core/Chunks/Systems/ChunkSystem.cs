@@ -17,7 +17,7 @@ namespace Oasis.Core
     // [UpdateAfter(typeof(ChunkVisible))]
     public partial class ChunkSystem : SystemBase
     {
-        public NativeHashMap<int3, Entity> _entities;
+        public NativeParallelHashMap<int3, Entity> _entities;
         private EntityManager _em;
         private BlockStateSystem _blockStateSystem;
         private EntityQuery query;
@@ -25,7 +25,7 @@ namespace Oasis.Core
         protected override void OnCreate()
         {
             _em = World.DefaultGameObjectInjectionWorld.EntityManager;
-            _entities = new NativeHashMap<int3, Entity>(512, Allocator.Persistent);
+            _entities = new NativeParallelHashMap<int3, Entity>(512, Allocator.Persistent);
             _blockStateSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<BlockStateSystem>();
             query = GetEntityQuery( new EntityQueryDesc {
                 None = new ComponentType[] {typeof(VoxelElement), typeof(BlockStateElement), typeof(LoadingTag)},

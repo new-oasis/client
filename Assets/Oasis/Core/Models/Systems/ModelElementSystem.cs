@@ -16,7 +16,7 @@ namespace Oasis.Core
         private EndInitializationEntityCommandBufferSystem _ecbSystem;
         private TextureSystem _textureSystem;
         EntityManager _em;
-        public NativeHashMap<FixedString64Bytes, Entity> Data;
+        public NativeParallelHashMap<FixedString64Bytes, Entity> Data;
 
         public GameObject prefab;
         private static float3 offset = new float3(-0.5f, -0.5f, -0.5f); // Enables center pivot
