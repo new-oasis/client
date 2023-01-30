@@ -119,8 +119,21 @@ namespace Oasis.Core
             Entity e = _em.CreateEntity(typeof(LoadingTag));
             _em.SetName(e, "Texture " + domainName.Domain + "/" + domainName.Name);
             _entities[domainName] = e;
-            LoadAsync(e, domainName);
+            if (GetSingleton<Settings>().online)
+                LoadAsync(e, domainName);
+            else
+                LoadLocal(e, domainName);
             return e;
+        }
+
+        public async void LoadLocal(Entity e, Grpc.DomainName gDomainName)
+        {
+            var settings = GetSingleton<Settings>();
+            var path = $"content/1.17.1/minecraft/textures/{gDomainName.Name}.png";
+            Texture2D texture2d = Resources.Load(path) as Texture2D; // TODO settings should have version
+            if (texture2d == null)
+                throw new Exception($"TextureSystem#LoadLocal failed to find file {gDomainName.Name}");
+            LoadTextureToArray(e, gDomainName, texture2d);
         }
 
         public async void LoadAsync(Entity e, Grpc.DomainName gDomainName)
@@ -128,47 +141,46 @@ namespace Oasis.Core
             try
             {
                 Grpc.Texture record = await Client.Instance.client.GetTextureAsync(gDomainName, Client.Instance.Metadata);
-
-
                 Texture2D texture2d = new Texture2D(2, 2);
                 texture2d.LoadImage(Convert.FromBase64String(record.Base64));
-
-                // Find empty array element
-                TextureType textureType = ComputeTextureType(record.Type);
-                int index = Array.IndexOf(_elements[textureType], Entity.Null);
-                if (index == -1)
-                    throw new Exception("#GetFreeIndex No free textureArray slots.");
-
-                // Convert textureFormat
-                TextureFormat textureFormat = TextureTypeToFormat(textureType);
-                Texture2D dstTexture = new Texture2D(16, 16, textureFormat, true);
-                if (texture2d.format != textureFormat)
-                    Debug.LogWarning($"===== Converting from {texture2d.format} to {textureFormat}");
-
-                dstTexture.SetPixels(texture2d.GetPixels());
-                dstTexture.Apply();
-                Graphics.CopyTexture(dstTexture, 0, _arrays[textureType], index);
-
-                _em.AddComponentData(e, new Texture()
-                {
-                    domainName = new DomainName(gDomainName),
-                    type = textureType,
-                    index = index,
-                });
-
-
-                // Store array type and index
-                _elements[textureType][index] = e;
-                _em.RemoveComponent<LoadingTag>(e);
-                _em.AddComponent<LoadedTag>(e);
-
-                // if (Settings.Instance.nameEntities)
-                // em.SetName(e, "Texture " + name.ToString());
+                LoadTextureToArray(e, gDomainName, texture2d);
             }
             catch (RpcException exception)
             {
                 Debug.LogWarning($"TextureSystem#LoadAsync {gDomainName} \t {exception.Message}");
             }
+        }
+
+        private void LoadTextureToArray(Entity e, Grpc.DomainName gDomainName, Texture2D texture2d)
+        {
+            // Find empty array element
+            // TextureType textureType = ComputeTextureType(record.Type);
+            TextureType textureType = TextureType.Opaque; // TODO move this logic from server
+            int index = Array.IndexOf(_elements[textureType], Entity.Null);
+            if (index == -1)
+                throw new Exception("#GetFreeIndex No free textureArray slots.");
+
+            // Convert textureFormat
+            TextureFormat textureFormat = TextureTypeToFormat(textureType);
+            Texture2D dstTexture = new Texture2D(16, 16, textureFormat, true);
+            if (texture2d.format != textureFormat)
+                Debug.LogWarning($"===== Converting from {texture2d.format} to {textureFormat}");
+
+            dstTexture.SetPixels(texture2d.GetPixels());
+            dstTexture.Apply();
+            Graphics.CopyTexture(dstTexture, 0, _arrays[textureType], index);
+
+            _em.AddComponentData(e, new Texture()
+            {
+                domainName = new DomainName(gDomainName),
+                type = textureType,
+                index = index,
+            });
+
+            // Store array type and index
+            _elements[textureType][index] = e;
+            _em.RemoveComponent<LoadingTag>(e);
+            _em.AddComponent<LoadedTag>(e);
         }
 
         TextureType ComputeTextureType(Oasis.Grpc.TextureType textureType)
