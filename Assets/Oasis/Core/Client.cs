@@ -25,14 +25,14 @@ public class Client : MonoBehaviour
     public string host;
     public int port;
     public Channel channel;
-        
+
     public Oasis.Grpc.Oasis.OasisClient client;
     public Metadata Metadata;
 
     public AsyncDuplexStreamingCall<FeedRequest, FeedResponse> feed;
     public IClientStreamWriter<FeedRequest> feedRequest;
     public IAsyncStreamReader<FeedResponse> feedResponse;
-    
+
     void Awake()
     {
         _instance = this;
@@ -40,7 +40,7 @@ public class Client : MonoBehaviour
         Environment.SetEnvironmentVariable("GRPC_VERBOSITY", "NONE"); // DEBUG
         Environment.SetEnvironmentVariable("GRPC_TRACE", ""); // api
         GrpcEnvironment.SetLogger(new UnityDebugLogger());
-        
+
         if (secure)
         {
             channel = new Channel(host, port, new SslCredentials());
@@ -63,7 +63,7 @@ public class Client : MonoBehaviour
             { "Authorization", $"Bearer {token}" }
         };
     }
-    
+
     public async void Feed()
     {
         feed = client.Feed(Metadata);
@@ -71,18 +71,18 @@ public class Client : MonoBehaviour
         feedResponse = feed.ResponseStream;
 
         var voxelSystem = World.DefaultGameObjectInjectionWorld.GetExistingSystem<VoxelSystem>();
-        
+
         while (await feedResponse.MoveNext())
         {
             switch (feedResponse.Current.EventCase)
             {
                 case FeedResponse.EventOneofCase.VoxelChange:
-                   Debug.Log("Got voxelChange from server");
-                   voxelSystem._queue.Add(feedResponse.Current.VoxelChange);
-                   break;
+                    Debug.Log("Got voxelChange from server");
+                    voxelSystem._queue.Add(feedResponse.Current.VoxelChange);
+                    break;
                 case FeedResponse.EventOneofCase.Shutdown:
-                   Debug.Log("Got shutdown from server");
-                   break;
+                    Debug.Log("Got shutdown from server");
+                    break;
             }
         }
     }

@@ -120,6 +120,7 @@ Material:
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
     - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
     - _DstBlend: 0
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -145,7 +146,7 @@ Material:
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 8
     - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskMV: 40
+    - _StencilWriteMaskMV: 42
     - _SurfaceType: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0

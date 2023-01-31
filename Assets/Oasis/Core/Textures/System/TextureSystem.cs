@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Grpc.Core;
@@ -6,6 +7,7 @@ using Oasis.Core;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Oasis.Core
 {
@@ -126,14 +128,24 @@ namespace Oasis.Core
             return e;
         }
 
-        public async void LoadLocal(Entity e, Grpc.DomainName gDomainName)
+        async void LoadLocal(Entity e, Grpc.DomainName gDomainName)
         {
             var settings = GetSingleton<Settings>();
-            var path = $"content/1.17.1/minecraft/textures/{gDomainName.Name}.png";
-            Texture2D texture2d = Resources.Load(path) as Texture2D; // TODO settings should have version
-            if (texture2d == null)
-                throw new Exception($"TextureSystem#LoadLocal failed to find file {gDomainName.Name}");
-            LoadTextureToArray(e, gDomainName, texture2d);
+            Uri uri = new Uri($"file://{Application.dataPath}/Resources/1.17.1/textures/{gDomainName.Name}.png");
+            var webRequest = UnityWebRequestTexture.GetTexture(uri);
+            var operation = webRequest.SendWebRequest();
+
+            while (!operation.isDone)
+                await Task.Yield();
+
+            Texture2D texture;
+            if (webRequest.result != UnityWebRequest.Result.Success)
+                Debug.LogError(webRequest.error);
+
+            texture = DownloadHandlerTexture.GetContent(webRequest);
+            Debug.Log($"Loaded texture {gDomainName.Name}");
+
+            LoadTextureToArray(e, gDomainName, texture);
         }
 
         public async void LoadAsync(Entity e, Grpc.DomainName gDomainName)

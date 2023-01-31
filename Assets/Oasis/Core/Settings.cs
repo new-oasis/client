@@ -7,6 +7,7 @@ using UnityEngine;
 [GenerateAuthoringComponent]
 public struct Settings : IComponentData
 {
+    public bool online;
     public FixedString32Bytes version;
     public int distance;
     public int height;
